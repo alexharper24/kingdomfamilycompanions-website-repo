@@ -20,7 +20,8 @@
   --cream-on-dark:#f7efe0;
   --rule:1px solid rgba(81,56,51,.22);
   --rule-soft:1px solid rgba(81,56,51,.12);
-  --maxw:1320px;
+  --maxw:1500px;      /* content column */
+  --maxw-wide:1760px;  /* header and photo bands run wider */
   --serif:'Newsreader',Georgia,serif;
   --sans:'Karla',system-ui,sans-serif;
   --shadow-sm:0 8px 24px -14px rgba(60,40,35,.35);
@@ -112,7 +113,8 @@ p{margin:0 0 1.1em}
   background:var(--paper);
   border-bottom:var(--rule);
 }
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:1rem;
+  width:min(94%,var(--maxw-wide))}
 .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--espresso)}
 .brand .mark{width:34px;height:34px;color:var(--gold);flex:none}
 .brand .mark svg{width:100%;height:100%}
@@ -130,7 +132,12 @@ p{margin:0 0 1.1em}
   padding:.55rem 1.2rem;margin-left:.4rem;border-bottom:1.5px solid var(--espresso);
 }
 .nav-links .nav-cta:hover{background:var(--espresso-deep);color:var(--cream-on-dark)}
-.nav-links .nav-cta.active{border-bottom-color:var(--espresso)}
+/* On the contact page the CTA carries both nav-cta and active. Without this it picked up
+   the plain-link active rule and rendered as a solid dark block with no readable label. */
+.nav-links a.nav-cta.active{
+  background:var(--espresso);color:var(--cream-on-dark);border-color:var(--espresso);
+  border-bottom-color:var(--gold);
+}
 .nav-toggle{
   display:none;background:none;border:none;cursor:pointer;padding:.6rem;
   width:44px;height:44px;
@@ -138,8 +145,19 @@ p{margin:0 0 1.1em}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--espresso);margin:5px 0;transition:transform .3s ease,opacity .3s ease}
 
 /* ---------- hero ---------- */
-.hero{padding:5.5rem 0 4.5rem;border-bottom:var(--rule)}
+.hero{padding:3rem 0 2.6rem;border-bottom:var(--rule)}
+/* compact page-top intro: title + one paragraph, then straight into content */
+.hero.slim{padding:2.4rem 0 2rem}
+.hero.slim .lead{max-width:72ch}
+.hero.slim h1{margin-bottom:.35em}
 .hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:3.5rem;align-items:center}
+
+/* full-bleed hero: copy on a cream panel, photograph running to the screen edge */
+.hero-split{display:grid;grid-template-columns:minmax(420px,42%) 1fr;align-items:center;
+  border-bottom:var(--rule);gap:0}
+.hero-split .hs-copy{padding:3.4rem clamp(1.5rem,4vw,4rem) 3.4rem
+  max(3vw,calc((100vw - var(--maxw-wide)) / 2 + 1.5rem))}
+.hero-split .hs-photo{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
 .hero-logo{width:min(340px,70%);height:auto;display:block;margin-bottom:2rem}
 .caps{text-transform:uppercase;letter-spacing:.05em}
 .hero .verse{
@@ -148,7 +166,8 @@ p{margin:0 0 1.1em}
 .hero .verse cite{font-style:normal;font-family:var(--sans);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-left:.6rem}
 
 /* ---------- narrative sections: hairline rules + space, no tint stripes ---------- */
-.section{padding:4.5rem 0}
+.section{padding:3.4rem 0}
+.section.tight{padding-top:2rem}
 .section + .section{border-top:var(--rule)}
 .section-head{max-width:62ch;margin-bottom:2.4rem}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
@@ -156,8 +175,11 @@ p{margin:0 0 1.1em}
 .abgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:3.5rem;align-items:center}
 
 /* full-bleed photo band: natural 3:2 images, edge to edge, no cropping */
-.band{width:100vw;margin-left:calc(50% - 50vw);display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:.6rem 0}
+.band{width:100vw;margin-left:calc(50% - 50vw);display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.5rem 0}
 .band img{width:100%;height:auto;display:block}
+.band-3{grid-template-columns:repeat(3,1fr)}
+/* equalize the row so mixed aspect ratios still line up edge to edge */
+.band-3 img{height:clamp(300px,26vw,460px);object-fit:cover}
 
 /* wide gallery: page-width tiles, deliberately large, natural ratio */
 .gal-wide{width:min(96%,1500px);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -192,6 +214,27 @@ p{margin:0 0 1.1em}
 
 /* ---------- index / ledger rows ---------- */
 .ledger{border-top:var(--rule);margin-top:1rem}
+/* puppy cards: photo-forward, the picture is the click target */
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.6rem}
+.pcard{text-decoration:none;color:var(--ink);display:block;border:1px solid rgba(81,56,51,.18);background:var(--white)}
+.pcard img{width:100%;height:clamp(300px,24vw,430px);object-fit:cover;display:block}
+.pcard-bar{padding:1.1rem 1.2rem;display:grid;grid-template-columns:1fr auto;gap:.15rem 1rem;align-items:baseline}
+.pcard .pc-name{font-family:var(--serif);font-size:1.55rem;color:var(--espresso);line-height:1.1}
+.pcard .pc-price{font-family:var(--serif);font-size:1.15rem;color:var(--espresso);text-align:right}
+.pcard .pc-meta{font-size:.92rem;color:var(--ink-soft)}
+.pcard .pc-status{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);text-align:right}
+.pcard:hover{border-color:var(--espresso)}
+.pcard:hover .pc-name{color:var(--gold-deep)}
+
+/* contact side panels */
+.side-panel{border:var(--rule);background:var(--white);padding:1.6rem}
+.side-panel h2{font-size:1.35rem}
+.mini-list{list-style:none;margin:0;padding:0}
+.mini-list li{padding:.5rem 0;border-bottom:var(--rule-soft)}
+.mini-list li:last-child{border-bottom:none}
+.mini-list a{font-weight:600;text-decoration:none}
+.mini-list a:hover{text-decoration:underline}
+
 .breed-group{padding:3rem 0}
 .breed-group + .breed-group{border-top:var(--rule)}
 .breed-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
@@ -227,6 +270,21 @@ a.ledger-row:hover{background:var(--paper-deep)}
 .health p{margin-bottom:.4em}
 .health .btn{margin-top:.6rem;padding:.55rem 1.2rem;font-size:.88rem}
 
+/* ---------- process: alternating photo/copy rows ---------- */
+.pstep{display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:center;padding:2.6rem 0;border-top:var(--rule)}
+.pstep:first-of-type{border-top:none;padding-top:1rem}
+.pstep.flip .photo{order:2}
+.pstep-copy{position:relative}
+.pstep-num{display:block;font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.pstep-copy h2{font-size:1.75rem;margin-bottom:.4em}
+.pstep-copy p{margin-bottom:0;max-width:52ch}
+
+/* ---------- about: story column + figure ---------- */
+.story{display:grid;grid-template-columns:1.25fr 1fr;gap:3.5rem;align-items:start}
+.story-copy{max-width:64ch}
+.story-figure{margin:0}
+.story-figure figcaption{margin-top:.7rem;font-size:.92rem;color:var(--ink-soft);font-style:italic}
+
 /* ---------- numbered process (narrative scroll) ---------- */
 .steps{counter-reset:step;max-width:70ch}
 .step{
@@ -242,13 +300,35 @@ a.ledger-row:hover{background:var(--paper-deep)}
 .step p:last-child{margin-bottom:0}
 
 /* ---------- puppy detail page ---------- */
-.pgrid{display:grid;grid-template-columns:1.6fr 1fr;gap:3rem;align-items:start;padding:3rem 0}
-.pgallery{display:grid;gap:1rem}
-.pgallery .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pgrid{display:grid;grid-template-columns:1.7fr 1fr;gap:3.5rem;align-items:start;padding:2rem 0 3rem}
+.puppy-name{margin-bottom:1rem}
+.puppy-name h1{margin-bottom:.1em}
+
+/* carousel: one large photo, thumbnail strip beneath, no JS-free fallback needed */
+.carousel{position:relative}
+.carousel .frame{position:relative;background:var(--paper-deep);border:1px solid rgba(81,56,51,.18)}
+.carousel .frame img{width:100%;height:auto;display:block}
+.carousel .frame img[hidden]{display:none}
+.carousel .cnav{position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border:none;cursor:pointer;
+  background:rgba(60,40,35,.72);color:var(--cream-on-dark);
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1}
+.carousel .cnav:hover{background:var(--espresso-deep)}
+.carousel .cprev{left:0}
+.carousel .cnext{right:0}
+.carousel .count{position:absolute;right:.7rem;bottom:.7rem;
+  background:rgba(60,40,35,.72);color:var(--cream-on-dark);
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;padding:.3rem .7rem}
+.cthumbs{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+.cthumbs button{width:92px;height:92px;padding:0;border:2px solid transparent;background:none;cursor:pointer;flex:none}
+.cthumbs button img{width:100%;height:100%;object-fit:cover;display:block}
+.cthumbs button[aria-current="true"]{border-color:var(--gold)}
 .price-line{font-family:var(--serif);font-size:2rem;color:var(--espresso);margin:.4rem 0 .2rem}
 .pfacts{border-top:var(--rule);margin:1.4rem 0}
 .pfacts .row{display:flex;gap:1rem;padding:.7rem 0;border-bottom:var(--rule-soft);font-size:.96rem}
 .pfacts .row .lbl{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);min-width:7rem;padding-top:.15rem}
+.pabout{margin-top:2rem;padding-top:1.6rem;border-top:var(--rule)}
+.pabout h2{font-size:1.4rem}
 .reserve{border:var(--rule);background:var(--white);padding:1.8rem;margin-top:1.8rem}
 .reserve h2{font-size:1.5rem;margin-bottom:.4em}
 .paytype{display:flex;gap:.8rem;flex-wrap:wrap;margin:1rem 0 1.1rem}
@@ -346,18 +426,23 @@ form{margin-top:.5rem}
 .form-thanks .thanks-badge{color:var(--gold-deep);margin-bottom:1rem}
 .is-sending{opacity:.6;pointer-events:none}
 
-/* ---------- footer ---------- */
-.footer{border-top:var(--rule);padding:3.5rem 0 2rem;margin-top:4rem}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem}
-.foot-name{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--espresso);margin-bottom:.4rem}
-.foot-verse{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.98rem}
-.foot-verse span{font-style:normal;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-left:.5rem}
-.foot-h{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 .8rem}
+/* ---------- footer: the espresso block that closes every page ---------- */
+.footer{background:var(--espresso-deep);color:var(--cream-on-dark);padding:3.5rem 0 2rem;margin-top:4rem}
+.footer .wrap{width:min(94%,var(--maxw-wide))}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
+.foot-logo{width:210px;height:auto;display:block;margin-bottom:1rem}
+.foot-name{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--cream-on-dark);margin-bottom:.4rem}
+.foot-verse{font-family:var(--serif);font-style:italic;color:rgba(247,239,224,.8);font-size:.98rem}
+.foot-verse span{font-style:normal;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-left:.5rem}
+.foot-h{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 .9rem}
 .footer ul{list-style:none;margin:0;padding:0}
-.footer li{margin-bottom:.5rem}
-.footer a{text-decoration:none;color:var(--ink);font-weight:600}
-.footer a:hover{color:var(--espresso);text-decoration:underline}
-.foot-legal{margin-top:2.5rem;padding-top:1.2rem;border-top:var(--rule-soft);font-size:.85rem;color:var(--ink-soft)}
+.footer li{margin-bottom:.55rem}
+.footer a{text-decoration:none;color:var(--cream-on-dark);font-weight:600}
+.footer a:hover{color:var(--gold);text-decoration:underline}
+.footer .small.muted{color:rgba(247,239,224,.72)}
+.foot-legal{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid rgba(247,239,224,.18);
+  font-size:.85rem;color:rgba(247,239,224,.72)}
+.foot-legal a{font-weight:600}
 
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
@@ -406,8 +491,19 @@ form{margin-top:.5rem}
   .nav-overlay.open{opacity:1;visibility:visible}
 
   .hero{padding:3.5rem 0 3rem}
-  .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.testi-grid,.gal-wide,.bpost{grid-template-columns:1fr;gap:2rem}
+  .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.band-3,.testi-grid,.gal-wide,.bpost,.hero-split{grid-template-columns:1fr;gap:2rem}
   .gal-wide{width:92%;gap:1rem}
+  .hero-split{gap:0}
+  .hero-split .hs-copy{padding:2.4rem 4% 2rem;order:2}
+  .hero-split .hs-photo{min-height:0;height:auto;order:1}
+  .band-3 img{height:auto}
+  .pcards{grid-template-columns:1fr;gap:1.4rem}
+  .pcard img{height:auto}
+  .pstep,.story{grid-template-columns:1fr;gap:1.6rem}
+  .pstep.flip .photo{order:0}
+  .pstep{padding:2rem 0}
+  .cthumbs button{width:72px;height:72px}
+  .carousel .cnav{width:40px;height:40px}
   .band{gap:.6rem;padding:.6rem 0}
   .vmission{gap:1.8rem;text-align:center}
   .dog{grid-template-columns:1fr;gap:1.5rem;padding:2.4rem 0}
@@ -444,5 +540,7 @@ form{margin-top:.5rem}
   .nav,.nav-links{background:var(--paper) !important}
   .form-thanks,.field input,.field select,.field textarea{background:var(--white) !important;color:var(--ink) !important}
   .reserve,.chat-panel{background:var(--white) !important;color:var(--ink) !important}
-  .verseband{background:var(--espresso-deep) !important;color:var(--cream-on-dark) !important}
+  /* deliberate dark blocks: keep them dark, do not let the lock repaint them */
+  .verseband,.footer{background:var(--espresso-deep) !important;color:var(--cream-on-dark) !important}
+  .footer a{color:var(--cream-on-dark) !important}
 }

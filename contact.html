@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -50,23 +50,21 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero slim">
   <div class="wrap">
     <span class="kicker">Say hello</span>
     <h1>Tell us about your family</h1>
-    <p class="lead">Send us a short note and we will follow up to talk, answer questions, and set up a visit or a video call. There is no fee and no commitment to inquire.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section tight">
   <div class="wrap contact-grid">
-
     <div class="reveal">
-      <!-- Replace YOUR_FORM_ID with the ID from the Formspree dashboard, here and nowhere else -->
+      <p class="lead" style="margin-bottom:1.6rem">Send us a short note and we will follow up to talk, answer questions, and set up a visit or a video call. There is no fee and no commitment to inquire.</p>
+      <!-- Replace YOUR_FORM_ID with the ID from the Formspree dashboard -->
       <form id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Puppy Inquiry - Kingdom Family Companions">
-        <!-- spam honeypot. Uses the clip pattern, NOT left:-9999px: the off-screen
-     trick expands the layout and gave the whole page horizontal scroll on mobile. -->
+        <!-- spam honeypot. Uses the clip pattern, NOT left:-9999px, which expands the layout. -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
                style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">
         <div class="two-up">
@@ -87,15 +85,15 @@
           <div class="field">
             <label for="f-interest">I&rsquo;m interested in</label>
             <select id="f-interest" name="interest">
-              <option>A Golden Retriever puppy</option>
               <option>A Doberman Pinscher puppy</option>
+              <option>A Golden Retriever puppy</option>
               <option>A specific puppy (tell us below)</option>
               <option>A future litter</option>
               <option>Just have questions</option>
             </select>
           </div>
           <div class="field">
-            <label for="f-timing">When are you hoping to bring a puppy home?</label>
+            <label for="f-timing">Timing</label>
             <select id="f-timing" name="timing">
               <option>As soon as possible</option>
               <option>In the next few months</option>
@@ -120,17 +118,25 @@
       </div>
     </div>
 
-    <div class="reveal">
-      <h2>Other ways to reach us</h2>
-      <div class="contact-lines">
-        <div class="row"><span class="lbl">Call/Text</span><a href="tel:+12603069010">(260) 306-9010</a></div>
-        <div class="row"><span class="lbl">Email</span><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></div>
-        <div class="row"><span class="lbl">Area</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Milford%2C+IN" target="_blank" rel="noopener">Milford, Indiana</a></span></div>
+    <aside class="reveal">
+      <div class="side-panel">
+        <h2>Other ways to reach us</h2>
+        <div class="contact-lines">
+          <div class="row"><span class="lbl">Call/Text</span><a href="tel:+12603069010">(260) 306-9010</a></div>
+          <div class="row"><span class="lbl">Email</span><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></div>
+          <div class="row"><span class="lbl">Area</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Milford%2C+IN" target="_blank" rel="noopener">Milford, Indiana</a></span></div>
+        </div>
+        <p class="small muted" style="margin-top:1.2rem">Visits are welcome by appointment, and we are happy to do video calls with families farther away. Our location is shared once your visit is scheduled.</p>
       </div>
-      <p class="small muted" style="margin-top:1.5rem">Visits are welcome by appointment, and we are happy to do video calls with families farther away. Our location is shared once your visit is scheduled.</p>
-      <img class="photo reveal contact-photo" src="img/puppy-elowen-3.jpg" alt="Elowen sitting on the driveway on a purple leash" width="1600" height="1067" loading="lazy" style="margin-top:2rem">
-    </div>
-
+      <div class="side-panel" style="margin-top:1.2rem">
+        <p class="foot-h" style="color:var(--gold-deep)">Currently available</p>
+        <ul class="mini-list">
+          <li><a href="puppy-elowen.html">Elowen &middot; Doberman girl</a></li>
+          <li><a href="puppy-malcolm.html">Malcolm &middot; Doberman boy</a></li>
+          <li><a href="puppy-griffin.html">Griffin &middot; Doberman boy</a></li>
+        </ul>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -138,35 +144,35 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <p class="foot-name">Kingdom Family Companions</p>
+        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
       <div>
-        <p class="foot-h">Site</p>
+        <p class="foot-h">Explore</p>
         <ul>
           <li><a href="puppies.html">Available Puppies</a></li>
           <li><a href="our-dogs.html">Our Dogs</a></li>
           <li><a href="process.html">Our Process</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
-        <p class="foot-h">Reach us</p>
+        <p class="foot-h">Get in touch</p>
         <ul>
           <li><a href="tel:+12603069010">(260) 306-9010</a></li>
           <li><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></li>
           <li>Milford, Indiana</li>
+          <li><a href="contact.html">Start an Inquiry</a></li>
         </ul>
       </div>
     </div>
-    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.
+    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits by appointment; our location is shared once your visit is scheduled.
       <span style="display:block;margin-top:.5rem"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="accessibility-statement.html">Accessibility Statement</a></span></p>
   </div>
 </footer>
 
-<script src="main.js?v=2"></script>
+<script src="main.js?v=3"></script>
 </body>
 </html>

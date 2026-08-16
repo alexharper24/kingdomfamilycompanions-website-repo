@@ -55,6 +55,35 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); } });
 })();
 
+/* ---------- puppy photo carousel ---------- */
+(function () {
+  document.querySelectorAll('.carousel').forEach(function (car) {
+    const slides = [...car.querySelectorAll('.frame img')];
+    const thumbs = [...car.querySelectorAll('.cthumbs button')];
+    const counter = car.querySelector('.count');
+    if (slides.length < 2) {
+      car.querySelectorAll('.cnav').forEach(b => b.remove());
+      if (counter) counter.remove();
+      return;
+    }
+    let i = 0;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => { s.hidden = k !== i; });
+      thumbs.forEach((t, k) => t.setAttribute('aria-current', k === i ? 'true' : 'false'));
+      if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
+    };
+    car.querySelector('.cprev').addEventListener('click', () => show(i - 1));
+    car.querySelector('.cnext').addEventListener('click', () => show(i + 1));
+    thumbs.forEach((t, k) => t.addEventListener('click', () => show(k)));
+    car.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { show(i - 1); }
+      if (e.key === 'ArrowRight') { show(i + 1); }
+    });
+    show(0);
+  });
+})();
+
 /* ---------- reserve buttons: friendly guard until PayPal links are configured ---------- */
 (function () {
   const links = document.querySelectorAll('.pay-link');

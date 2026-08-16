@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -50,55 +50,63 @@
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <span class="kicker">How it works</span>
-      <h1>From first hello to go-home day</h1>
-      <p class="lead">Bringing home a puppy is a family decision, not an online checkout. Here is exactly what to expect from the first message to the day your puppy comes home.</p>
-    </div>
-    <img class="photo reveal" src="img/boy-with-puppy.jpg" alt="A young boy holding a cream puppy" width="1600" height="1066" fetchpriority="high">
+<section class="hero slim">
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h1>From first hello to go-home day</h1>
+    <p class="lead">Bringing home a puppy is a family decision, not an online checkout. Here is exactly what to expect, start to finish.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section tight">
   <div class="wrap">
-    <div class="steps">
-      <div class="step reveal">
-        <h3>Start an inquiry</h3>
+    <div class="pstep reveal">
+      <img class="photo" src="img/boy-with-puppy.jpg" alt="A young boy holding a cream puppy" width="1799" height="1199" loading="lazy">
+      <div class="pstep-copy">
+        <span class="pstep-num">01</span>
+        <h2>Start an inquiry</h2>
         <p>Send us a short note about your family, your home, and which breed or puppy caught your eye. There is no fee and no commitment. We read every inquiry and reply personally.</p>
       </div>
-      <div class="step reveal">
-        <h3>Talk with us and meet the puppies</h3>
+    </div>
+    <div class="pstep flip reveal">
+      <img class="photo" src="img/puppy-elowen-2.jpg" alt="Elowen looking up while sitting in the grass" width="1800" height="1271" loading="lazy">
+      <div class="pstep-copy">
+        <span class="pstep-num">02</span>
+        <h2>Talk with us and meet the puppies</h2>
         <p>We will set up a call, a video call, or an in-person visit, whichever suits you. We want you to meet the puppies and their parents, and we want to make sure the fit is right in both directions.</p>
       </div>
-      <div class="step reveal">
-        <h3>Reserve your puppy with a deposit</h3>
+    </div>
+    <div class="pstep reveal">
+      <img class="photo" src="img/puppy-malcolm-1.jpg" alt="Malcolm sitting in the grass on a blue leash" width="1800" height="1200" loading="lazy">
+      <div class="pstep-copy">
+        <span class="pstep-num">03</span>
+        <h2>Reserve your puppy with a deposit</h2>
         <p>Once we have connected and you have chosen your puppy, a deposit holds them for you. <!-- REPLACE THIS: deposit amount, whether it is refundable, and how it is paid --></p>
       </div>
-      <div class="step reveal">
-        <h3>Watch them grow</h3>
-        <p>While your puppy finishes growing up with us, we keep working on socialization and early training and send you updates along the way. <!-- REPLACE THIS: confirm update cadence, e.g. weekly photos --></p>
-      </div>
-      <div class="step reveal">
-        <h3>Go-home day</h3>
-        <p>Pick up your puppy here in northern Indiana, or ask us about safe transportation. <!-- REPLACE THIS: what goes home with each puppy: vaccinations, deworming, vet check, microchip, food, blanket, contract, health guarantee terms --></p>
+    </div>
+    <div class="pstep flip reveal">
+      <img class="photo" src="img/puppy-cushion.jpg" alt="A black and tan puppy lying on a cushion with a rope toy" width="1799" height="1199" loading="lazy">
+      <div class="pstep-copy">
+        <span class="pstep-num">04</span>
+        <h2>Watch them grow</h2>
+        <p>While your puppy finishes growing up with us, we keep working on socialization and early training, and we send you updates along the way. <!-- REPLACE THIS: confirm update cadence --></p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="gal-wide reveal">
-    <img class="photo" src="img/puppy-cushion.jpg" alt="A black and tan puppy lying on a cushion with a rope toy" width="1600" height="1066" loading="lazy">
-    <img class="photo" src="img/puppy-elowen-1.jpg" alt="Elowen sitting in the grass on a purple leash" width="1600" height="1067" loading="lazy">
+    <div class="pstep reveal">
+      <img class="photo" src="img/puppy-griffin-1.jpg" alt="Griffin sitting on a country road beside a white fence" width="1800" height="1278" loading="lazy">
+      <div class="pstep-copy">
+        <span class="pstep-num">05</span>
+        <h2>Go-home day</h2>
+        <p>Pick up your puppy here in northern Indiana, or ask us about safe transportation. <!-- REPLACE THIS: what goes home with each puppy: vaccinations, deworming, vet check, microchip, food, blanket, contract, health guarantee --></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="verseband">
   <div class="wrap">
     <p class="quote">Our puppies leave here knowing what a family sounds like.</p>
-    <!-- Draft line written for the family to approve or replace with their own words -->
+    <!-- Draft line for the family to approve or replace with their own words -->
   </div>
 </section>
 
@@ -134,7 +142,7 @@
 </section>
 
 <section class="section">
-  <div class="wrap prose reveal">
+  <div class="wrap prose reveal" style="max-width:70ch">
     <h2>Ready to start?</h2>
     <p>Tell us a little about your family, and we will take it from there.</p>
     <div class="btn-row">
@@ -148,35 +156,35 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <p class="foot-name">Kingdom Family Companions</p>
+        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
       <div>
-        <p class="foot-h">Site</p>
+        <p class="foot-h">Explore</p>
         <ul>
           <li><a href="puppies.html">Available Puppies</a></li>
           <li><a href="our-dogs.html">Our Dogs</a></li>
           <li><a href="process.html">Our Process</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
-        <p class="foot-h">Reach us</p>
+        <p class="foot-h">Get in touch</p>
         <ul>
           <li><a href="tel:+12603069010">(260) 306-9010</a></li>
           <li><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></li>
           <li>Milford, Indiana</li>
+          <li><a href="contact.html">Start an Inquiry</a></li>
         </ul>
       </div>
     </div>
-    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.
+    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits by appointment; our location is shared once your visit is scheduled.
       <span style="display:block;margin-top:.5rem"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="accessibility-statement.html">Accessibility Statement</a></span></p>
   </div>
 </footer>
 
-<script src="main.js?v=2"></script>
+<script src="main.js?v=3"></script>
 </body>
 </html>
