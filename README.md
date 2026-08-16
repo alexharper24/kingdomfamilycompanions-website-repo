@@ -25,7 +25,13 @@ espresso ink, one gold thread, unhurried editorial type.
 | `process.html` | Inquiry-to-go-home steps + FAQ. Replaces the Wix cart flow |
 | `about.html` | The family's real story (from the live site, boilerplate removed) |
 | `contact.html` | Inquiry form (Formspree, un-configured guard active) |
+| `puppy-elowen.html` etc. | Per-puppy pages: gallery, facts, reserve (Deposit/Balance/Full via PayPal links), share buttons |
+| `blog.html` + `post-*.html` | Blog index and the four posts carried over from Wix |
 | `404.html` | Not-found page |
+
+Every page also gets a floating "Let's Chat" launcher (injected by `main.js`) with
+call/text/email/inquiry links. If the family wants true live chat, drop in a free
+Tawk.to embed and remove the launcher.
 
 ## Run locally
 
@@ -40,10 +46,11 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
 
 ## Deliberate decisions (do not "fix" these back)
 
-- **No shopping cart.** The live Wix site sells puppies as store products with
-  Add-to-Cart. This rebuild intentionally replaces that with an inquiry-first flow
-  (application → conversation → deposit). Deposits are handled off-site (invoice or
-  payment link) after the family has screened the buyer.
+- **No shopping cart, but reserve buttons carried over.** Each puppy page has
+  Deposit / Balance / Full Payment buttons (matching the Wix flow) wired for PayPal
+  payment links, with a friendly guard until the real links are configured. The
+  inquiry path stays primary. PayPal "Pay Later" financing messaging (shown on the
+  Wix site) can be added later with the PayPal JS SDK + their client ID.
 - **No street address anywhere.** Home-based family business. Service area only;
   "location shared once your visit is scheduled."
 - **Draft mode:** every page carries `noindex` and `robots.txt` is closed. The live Wix
@@ -71,8 +78,13 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       over the crown mark). Header keeps the crown SVG for legibility at 34px.
 - [ ] Hero photo: currently the basket-puppy photo. Alternates in `img/` if a different
       hero is preferred (boy-with-puppy, elowen-2, family-porch).
-- [ ] Per-puppy facts on `puppies.html` and `index.html`: **breed** (not stated on the
-      live listings!), sex, date of birth, go-home date. Marked `REPLACE THIS`.
+- [x] Breed confirmed by Alex 2026-08-16: current puppies (Elowen, Malcolm, Griffin)
+      are **Doberman Pinschers**. Set everywhere.
+- [ ] Per-puppy date of birth + go-home date (`puppy-*.html`, ledgers). Marked
+      `REPLACE THIS`.
+- [ ] PayPal payment links for Deposit / Balance / Full Payment on the three
+      `puppy-*.html` pages (search `YOUR_PAYPAL`). Guard message shows until then.
+      Ask the family for their PayPal payment-link URLs (they already take PayPal).
 - [ ] Family member names + intro sentences (`about.html`). Confirm what they will publish.
 - [ ] One sentence on what the name/verse means to them (`index.html` verse band).
 - [ ] Verse-band line on `process.html` ("Our puppies leave here knowing what a family
@@ -99,7 +111,10 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       is hosted on GenSol's Azure blob, which is theirs, fine to keep hot).
 - [ ] Google Business Profile + Search Console after launch (the current Wix site is
       noindexed, so this will be the first time the business is findable at all).
-- [ ] Privacy policy page if they want to keep one (Wix auto-generated theirs).
+- [ ] Privacy policy page if they want to keep one (Wix auto-generated theirs), and
+      decide whether to keep an accessibility statement (the Wix one is boilerplate).
+- [ ] Blog posts carry no dates (Wix showed relative dates). Add real dates if wanted.
+      The two March posts are generic filler; recommend replacing them over time.
 
 ## Notes for future sessions
 
