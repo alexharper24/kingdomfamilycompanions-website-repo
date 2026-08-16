@@ -136,8 +136,11 @@ Crawled every page. Carried forward or deliberately dropped:
       guarantee terms (`process.html`, marked `REPLACE THIS`). Never guess these.
 - [ ] Price confirmation: $2,200 shown for all three current puppies (from live site).
       Confirm whether it varies by breed/litter.
-- [ ] Attribution for the long school-visit testimonial (currently unused; has the
-      "hells"→"heels" typo).
+- [ ] Attribution for the long school-visit testimonial (unattributed on the live
+      site; the "hells"→"heels" typo is fixed here).
+- [ ] The homepage now carries four testimonials. Two (Mckinzie, Letteer) were
+      transcribed from screenshots because they are not on the live site yet.
+      Verify the wording against the originals.
 - [x] OFA record links wired on `our-dogs.html` (2026-08-16). Decoded from the QR code
       images on the live site and each verified in-browser to resolve to a real record.
       Note the URL has **no trailing slash** before `?appnum=`, or OFA serves a blank
@@ -159,11 +162,12 @@ Crawled every page. Carried forward or deliberately dropped:
 **Technical:**
 - [ ] Formspree form ID in `contact.html` (guard message active until then). First real
       submission triggers a one-time confirmation email to the owner.
-- [ ] Create GitHub repo under `github.com/alexharper24` and push. Attempted
-      2026-08-16 and blocked by the permission classifier (public-publish action).
-      Run manually:
-      `gh repo create kingdomfamilycompanions-website-repo --public --source=. --remote=origin --push`
-      then Settings > Pages > Deploy from a branch > main > / (root).
+- [x] Published 2026-08-16 to
+      https://github.com/alexharper24/kingdomfamilycompanions-website-repo
+      Live preview: https://alexharper24.github.io/kingdomfamilycompanions-website-repo/
+      Pages serves from main / root, HTTPS enforced. Still in **draft mode**
+      (noindex on every page + closed robots.txt), so the link is shareable but
+      not indexable.
 - [ ] Launch checklist: remove noindex metas, open robots.txt, set custom domain in
       Pages settings **before** moving DNS, apex A records + www CNAME, Enforce HTTPS
       after cert. Localize any hot-linked images before cancelling Wix (the GenSol PDF
@@ -176,6 +180,22 @@ Crawled every page. Carried forward or deliberately dropped:
       their PayPal client ID and the PayPal JS SDK if they want it carried over.
 - [ ] Blog posts carry no dates (Wix showed relative dates). Add real dates if wanted.
       The two March posts are generic filler; recommend replacing them over time.
+
+## Layout gotchas specific to this build
+
+- **Compound selectors beat the shared mobile rule.** The mobile block collapses
+  layouts with a single-class list (`.contact-grid, .pgrid, ...`). Any base rule like
+  `.contact-grid.photo-right` or `.hero-split.narrow-copy` has higher specificity and
+  keeps its desktop columns on a phone, squeezing content to unusable widths. When you
+  add a modifier that sets `grid-template-columns`, add a matching mobile override.
+- **Never `object-fit: cover` a photo of people to force a height match.** It cropped
+  into a child's face on the About page. Match widths and let heights differ.
+- **`100vw` includes the scrollbar.** Full-bleed bands sit outside `.wrap`, so use
+  `width:100%`, not `100vw`, or the page scrolls horizontally.
+- **The nav overlay is injected into `.nav .wrap`.** It needs `position:fixed` at every
+  width, not just mobile, or it becomes a flex item and eats the header's right side.
+- Photos are sourced from Wix's *delivered* rendition, not the raw original: Wix applies
+  tone and unsharp-mask on delivery, so the originals are noticeably darker and softer.
 
 ## Notes for future sessions
 
