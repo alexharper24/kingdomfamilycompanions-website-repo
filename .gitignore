@@ -1,0 +1,14 @@
+# Raw source media never gets committed; only web-optimized derivatives in img/
+source-photos/
+originals/
+*.heic
+*.HEIC
+*.dng
+*.DNG
+*.psd
+*.tif
+*.tiff
+
+# OS noise
+.DS_Store
+Thumbs.db

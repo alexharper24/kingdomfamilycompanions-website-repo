@@ -1,0 +1,7 @@
+# DRAFT MODE: site is closed to crawlers until launch.
+# At launch: change Disallow to "Allow: /", and remove the
+# noindex meta from every page.
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.kingdomfamilycompanions.com/sitemap.xml
