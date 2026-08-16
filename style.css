@@ -113,8 +113,10 @@ p{margin:0 0 1.1em}
   background:var(--paper);
   border-bottom:var(--rule);
 }
+/* header spans the full viewport with matching padding on both sides, so the menu
+   reaches as far right as the logo sits from the left */
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:1rem;
-  width:min(94%,var(--maxw-wide))}
+  width:100%;max-width:none;margin:0;padding-inline:clamp(1.25rem,3.2vw,3.25rem)}
 .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--espresso)}
 .brand .mark{width:34px;height:34px;color:var(--gold);flex:none}
 .brand .mark svg{width:100%;height:100%}
@@ -142,6 +144,10 @@ p{margin:0 0 1.1em}
   display:none;background:none;border:none;cursor:pointer;padding:.6rem;
   width:44px;height:44px;
 }
+/* main.js appends this as a sibling of the drawer, i.e. a child of .nav .wrap.
+   Keep it out of flow at every width or it becomes a flex item in the header and
+   steals space from the right of the menu. */
+.nav-overlay{position:fixed;inset:0;opacity:0;visibility:hidden;pointer-events:none}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--espresso);margin:5px 0;transition:transform .3s ease,opacity .3s ease}
 
 /* ---------- hero ---------- */
@@ -172,14 +178,19 @@ p{margin:0 0 1.1em}
 .section-head{max-width:62ch;margin-bottom:2.4rem}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .split .photo{width:100%}
-.abgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:3.5rem;align-items:center}
+/* About Us on the homepage: photo takes the larger share */
+.abgrid{display:grid;grid-template-columns:1.55fr 1fr;gap:3.5rem;align-items:center}
 
 /* full-bleed photo band: natural 3:2 images, edge to edge, no cropping */
-.band{width:100vw;margin-left:calc(50% - 50vw);display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.5rem 0}
+/* full width without 100vw: 100vw counts the scrollbar and causes horizontal scroll.
+   .band sits outside .wrap, so 100% already spans the page. */
+.band{width:100%;margin-left:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.5rem 0}
 .band img{width:100%;height:auto;display:block}
 .band-3{grid-template-columns:repeat(3,1fr)}
+.band-2{grid-template-columns:1fr 1fr}
 /* equalize the row so mixed aspect ratios still line up edge to edge */
 .band-3 img{height:clamp(300px,26vw,460px);object-fit:cover}
+.band-2 img{height:clamp(360px,34vw,620px);object-fit:cover}
 
 /* wide gallery: page-width tiles, deliberately large, natural ratio */
 .gal-wide{width:min(96%,1500px);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -301,8 +312,11 @@ a.ledger-row:hover{background:var(--paper-deep)}
 
 /* ---------- puppy detail page ---------- */
 .pgrid{display:grid;grid-template-columns:1.7fr 1fr;gap:3.5rem;align-items:start;padding:2rem 0 3rem}
-.puppy-name{margin-bottom:1rem}
+/* name on the left, price on the right, both sitting above the photo */
+.puppy-name{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
+  flex-wrap:wrap;margin-bottom:1rem}
 .puppy-name h1{margin-bottom:.1em}
+.puppy-name .price-line{margin:0 0 .35rem}
 
 /* carousel: one large photo, thumbnail strip beneath, no JS-free fallback needed */
 .carousel{position:relative}
@@ -400,6 +414,8 @@ a.ledger-row:hover{background:var(--paper-deep)}
 
 /* ---------- contact / form ---------- */
 .contact-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:start}
+/* homepage variant: form column narrower so the photo beside it runs larger */
+.contact-grid.photo-right{grid-template-columns:minmax(0,.75fr) 1.25fr}
 .contact-lines{border-top:var(--rule);margin-top:.5rem}
 .contact-lines .row{display:flex;gap:1rem;align-items:baseline;padding:1rem 0;border-bottom:var(--rule-soft)}
 .contact-lines .row .lbl{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);min-width:5.5rem;flex:none}
@@ -485,13 +501,15 @@ form{margin-top:.5rem}
   .nav-toggle.active span:nth-child(2){opacity:0}
   .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-overlay{
-    position:fixed;inset:0;background:rgba(40,28,24,.5);
-    opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;z-index:60;
+    background:rgba(40,28,24,.5);
+    transition:opacity .35s ease,visibility .35s ease;z-index:60;
   }
-  .nav-overlay.open{opacity:1;visibility:visible}
+  .nav-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
 
   .hero{padding:3.5rem 0 3rem}
-  .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.band-3,.testi-grid,.gal-wide,.bpost,.hero-split{grid-template-columns:1fr;gap:2rem}
+  .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.band-2,.band-3,.testi-grid,.gal-wide,.bpost,.hero-split{grid-template-columns:1fr;gap:2rem}
+  .band-2 img{height:auto}
+  .puppy-name{gap:.4rem}
   .gal-wide{width:92%;gap:1rem}
   .hero-split{gap:0}
   .hero-split .hs-copy{padding:2.4rem 4% 2rem;order:2}
