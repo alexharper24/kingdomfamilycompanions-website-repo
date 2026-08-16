@@ -95,16 +95,29 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       Confirm whether it varies by breed/litter.
 - [ ] Attribution for the long school-visit testimonial (currently unused; has the
       "hells"→"heels" typo).
-- [ ] OFA listing links on ofa.org for each dog. The Wix QR-code filenames carry the
-      OFA numbers: Mira **2720473**, Diamond **2702496**, Scarlet **2702953**. Wire
-      these to their ofa.org result pages (HTML comments mark the spots in
-      `our-dogs.html`).
+- [x] OFA record links wired on `our-dogs.html` (2026-08-16). Decoded from the QR code
+      images on the live site and each verified in-browser to resolve to a real record.
+      Note the URL has **no trailing slash** before `?appnum=`, or OFA serves a blank
+      search form. Records confirm: Mira = KINGDOM'S MIRACULOUS GRACE (WS85545303,
+      born Oct 21 2024, Advanced Cardiac normal), Diamond = ELLA'S DIAMOND (SS41251409,
+      born May 3 2023, hips GOOD / elbows normal / cardiac normal), Scarlet =
+      KING'S SCARLET (SS30809501, born Oct 20 2021, cardiac normal).
+- [x] Scarlet's registered name (**King's Scarlet**) added; the live site omits it.
+- [ ] The OFA records show fewer evaluations than the site's prose claims (the prose
+      says "heart and eyes" for Mira and Scarlet, and "heart, eyes, hips, elbows" for
+      Diamond; OFA lists cardiac for all three, plus hips and elbows for Diamond). Eye
+      exams (CAER) are often not published to OFA. **Ask the family to confirm the
+      wording** rather than changing their claims.
 - [ ] Social links, if any.
 
 **Technical:**
 - [ ] Formspree form ID in `contact.html` (guard message active until then). First real
       submission triggers a one-time confirmation email to the owner.
-- [ ] Create GitHub repo under `github.com/alexharper24` and push.
+- [ ] Create GitHub repo under `github.com/alexharper24` and push. Attempted
+      2026-08-16 and blocked by the permission classifier (public-publish action).
+      Run manually:
+      `gh repo create kingdomfamilycompanions-website-repo --public --source=. --remote=origin --push`
+      then Settings > Pages > Deploy from a branch > main > / (root).
 - [ ] Launch checklist: remove noindex metas, open robots.txt, set custom domain in
       Pages settings **before** moving DNS, apex A records + www CNAME, Enforce HTTPS
       after cert. Localize any hot-linked images before cancelling Wix (the GenSol PDF
