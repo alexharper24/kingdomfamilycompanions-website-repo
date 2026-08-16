@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -65,7 +65,10 @@
       <!-- Replace YOUR_FORM_ID with the ID from the Formspree dashboard, here and nowhere else -->
       <form id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Puppy Inquiry - Kingdom Family Companions">
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <!-- spam honeypot. Uses the clip pattern, NOT left:-9999px: the off-screen
+     trick expands the layout and gave the whole page horizontal scroll on mobile. -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">
         <div class="two-up">
           <div class="field">
             <label for="f-name">Your name</label>
@@ -125,7 +128,7 @@
         <div class="row"><span class="lbl">Area</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Milford%2C+IN" target="_blank" rel="noopener">Milford, Indiana</a></span></div>
       </div>
       <p class="small muted" style="margin-top:1.5rem">Visits are welcome by appointment, and we are happy to do video calls with families farther away. Our location is shared once your visit is scheduled.</p>
-      <img class="photo reveal" src="img/puppy-elowen-3.jpg" alt="Elowen sitting on the driveway on a purple leash" width="1600" height="1067" loading="lazy" style="margin-top:2rem">
+      <img class="photo reveal contact-photo" src="img/puppy-elowen-3.jpg" alt="Elowen sitting on the driveway on a purple leash" width="1600" height="1067" loading="lazy" style="margin-top:2rem">
     </div>
 
   </div>
@@ -159,7 +162,8 @@
         </ul>
       </div>
     </div>
-    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.</p>
+    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.
+      <span style="display:block;margin-top:.5rem"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="accessibility-statement.html">Accessibility Statement</a></span></p>
   </div>
 </footer>
 

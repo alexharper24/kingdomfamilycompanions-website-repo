@@ -27,6 +27,9 @@ espresso ink, one gold thread, unhurried editorial type.
 | `contact.html` | Inquiry form (Formspree, un-configured guard active) |
 | `puppy-elowen.html` etc. | Per-puppy pages: gallery, facts, reserve (Deposit/Balance/Full via PayPal links), share buttons |
 | `blog.html` + `post-*.html` | Blog index and the four posts carried over from Wix |
+| `blog-feed.xml` | RSS feed (same filename the Wix site used, so subscribers survive) |
+| `privacy-policy.html` | Their real policy, carried over verbatim |
+| `accessibility-statement.html` | Rewritten honestly (see below) |
 | `404.html` | Not-found page |
 
 Every page also gets a floating "Let's Chat" launcher (injected by `main.js`) with
@@ -60,6 +63,46 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
 - **Testimonial typo fixed:** the live site's Courtney quote is used verbatim; the other
   live-site testimonial says "hells" for "heels" and is held out until attribution is
   confirmed (see pending list).
+
+## Findings from the full audit of the live Wix site (2026-08-16)
+
+Crawled every page. Carried forward or deliberately dropped:
+
+| Live page / feature | Status in this build |
+|---|---|
+| Home, About, Available Puppies, Our Dogs, Blog + 4 posts | Carried, restructured |
+| 3 product pages | Now `puppy-*.html` with reserve + share |
+| `/privacy-policy` | Carried **verbatim** |
+| `/accessibility-statement` | Rewritten, see below |
+| `/blog-feed.xml` | Regenerated at the same path |
+| `/cart-page`, `/category/all-products` ("Shop") | Dropped: duplicate storefront, replaced by the inquiry flow |
+| Wix chat widget | Replaced by the "Let's Chat" launcher |
+| PayPal Pay Later messaging | Not carried; needs their PayPal client ID (see pending) |
+
+**Problems found on the live site that the family should know about:**
+
+1. **Every page is `noindex`** while `robots.txt` says `Allow: /`, and the `sitemap.xml`
+   referenced by robots.txt returns **404**. The site cannot be found on Google at all.
+2. **A former business name, "Soli Deo Gloria Family Companion Dogs," is still embedded
+   site-wide** — in the blog RSS channel title and three times in the accessibility
+   statement. Worth cleaning up in Wix even if the rebuild replaces it.
+3. **The accessibility statement has unfilled Wix placeholders live in public**:
+   "[enter relevant date]", "[Name of the accessibility coordinator]",
+   "[Telephone number]", "[Email address]". It also claims things that are not true of
+   that site (alt text on images, accessible video). **Not copied.** The rebuild ships an
+   honest statement describing what this site actually does. Needs family review.
+4. **The privacy policy is written for a puppy marketplace**, not a single-family
+   breeder: it repeatedly references breeder accounts, breeder profiles, managing
+   breeder listings, and connecting families with breeders. It is real and dated
+   (Aug 11 2026), so it is carried **verbatim and unedited** here. Flag it to the family
+   and their attorney rather than rewriting it.
+5. **Griffin's product URL is `/product-page/agility-jump-bar`** (a renamed demo
+   product). Fixed here as `puppy-griffin.html`.
+6. **The "Contact" nav item links to the homepage** with no anchor. Fixed.
+7. **Site name truncated to "Kingdom Family Comp."** in every title tag. Fixed.
+8. **Available Puppies has an empty "Available Golden Retriever Puppies" section.**
+   Rebuilt as an explicit "between litters" waiting-list state.
+9. Testimonial typo "hells" for "heels". Fixed.
 
 ## Pending (the project tracker — keep current)
 
@@ -108,7 +151,10 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       Diamond; OFA lists cardiac for all three, plus hips and elbows for Diamond). Eye
       exams (CAER) are often not published to OFA. **Ask the family to confirm the
       wording** rather than changing their claims.
-- [ ] Social links, if any.
+- [ ] Social links, if any. The live site has none in the footer.
+- [ ] Ask about the former name "Soli Deo Gloria Family Companion Dogs" (see findings).
+- [ ] Family/attorney review of the carried-over privacy policy and the rewritten
+      accessibility statement, plus a last-updated date for the latter.
 
 **Technical:**
 - [ ] Formspree form ID in `contact.html` (guard message active until then). First real
@@ -124,8 +170,10 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       is hosted on GenSol's Azure blob, which is theirs, fine to keep hot).
 - [ ] Google Business Profile + Search Console after launch (the current Wix site is
       noindexed, so this will be the first time the business is findable at all).
-- [ ] Privacy policy page if they want to keep one (Wix auto-generated theirs), and
-      decide whether to keep an accessibility statement (the Wix one is boilerplate).
+- [x] Privacy policy and accessibility statement pages built and linked in the footer
+      on every page.
+- [ ] PayPal Pay Later / "Pay Monthly" messaging that the Wix product pages show. Needs
+      their PayPal client ID and the PayPal JS SDK if they want it carried over.
 - [ ] Blog posts carry no dates (Wix showed relative dates). Add real dates if wanted.
       The two March posts are generic filler; recommend replacing them over time.
 

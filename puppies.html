@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -60,33 +60,56 @@
 
 <section class="section">
   <div class="wrap">
-    <div class="ledger">
-      <a class="ledger-row" href="puppy-elowen.html">
-        <img class="l-thumb" src="img/thumb-elowen.jpg" alt="Elowen sitting in the grass" width="480" height="480">
-        <span class="l-name">Elowen</span>
-        <span class="l-meta">Doberman Pinscher &middot; girl &middot; REPLACE THIS: date of birth &middot; meet her, see photos, and reserve</span>
-        <span class="l-status">Available</span>
-        <span class="l-price">$2,200</span>
-      </a>
-      <a class="ledger-row" href="puppy-malcolm.html">
-        <img class="l-thumb" src="img/thumb-malcolm.jpg" alt="Malcolm sitting in the grass" width="480" height="480">
-        <span class="l-name">Malcolm</span>
-        <span class="l-meta">Doberman Pinscher &middot; boy &middot; REPLACE THIS: date of birth &middot; meet him, see photos, and reserve</span>
-        <span class="l-status">Available</span>
-        <span class="l-price">$2,200</span>
-      </a>
-      <a class="ledger-row" href="puppy-griffin.html">
-        <img class="l-thumb" src="img/thumb-griffin.jpg" alt="Griffin sitting on a country road" width="480" height="480">
-        <span class="l-name">Griffin</span>
-        <span class="l-meta">Doberman Pinscher &middot; boy &middot; REPLACE THIS: date of birth &middot; meet him, see photos, and reserve</span>
-        <span class="l-status">Available</span>
-        <span class="l-price">$2,200</span>
-      </a>
+
+    <div class="breed-group reveal">
+      <div class="breed-head">
+        <h2>Available Doberman Pinscher Puppies</h2>
+        <span class="breed-count">3 available</span>
+      </div>
+      <div class="ledger">
+        <a class="ledger-row" href="puppy-elowen.html">
+          <img class="l-thumb" src="img/thumb-elowen.jpg" alt="Elowen sitting in the grass" width="480" height="480">
+          <span class="l-name">Elowen</span>
+          <span class="l-meta">Girl &middot; REPLACE THIS: date of birth &middot; meet her, see photos, and reserve</span>
+          <span class="l-status">Available</span>
+          <span class="l-price">$2,200</span>
+        </a>
+        <a class="ledger-row" href="puppy-malcolm.html">
+          <img class="l-thumb" src="img/thumb-malcolm.jpg" alt="Malcolm sitting in the grass" width="480" height="480">
+          <span class="l-name">Malcolm</span>
+          <span class="l-meta">Boy &middot; REPLACE THIS: date of birth &middot; meet him, see photos, and reserve</span>
+          <span class="l-status">Available</span>
+          <span class="l-price">$2,200</span>
+        </a>
+        <a class="ledger-row" href="puppy-griffin.html">
+          <img class="l-thumb" src="img/thumb-griffin.jpg" alt="Griffin sitting on a country road" width="480" height="480">
+          <span class="l-name">Griffin</span>
+          <span class="l-meta">Boy &middot; REPLACE THIS: date of birth &middot; meet him, see photos, and reserve</span>
+          <span class="l-status">Available</span>
+          <span class="l-price">$2,200</span>
+        </a>
+      </div>
+      <div class="split" style="margin-top:2.5rem">
+        <img class="photo" src="img/puppy-elowen-2.jpg" alt="Elowen looking up while sitting in the grass on a purple leash" width="1600" height="1130" loading="lazy">
+        <img class="photo" src="img/puppy-griffin-3.jpg" alt="Griffin carrying a plush giraffe toy" width="1600" height="1066" loading="lazy">
+      </div>
     </div>
-    <div class="split" style="margin-top:2.5rem">
-      <img class="photo reveal" src="img/puppy-elowen-2.jpg" alt="Elowen looking up while sitting in the grass on a purple leash" width="1600" height="1130" loading="lazy">
-      <img class="photo reveal" src="img/puppy-griffin-3.jpg" alt="Griffin carrying a plush giraffe toy" width="1600" height="1066" loading="lazy">
+
+    <div class="breed-group reveal">
+      <div class="breed-head">
+        <h2>Available Golden Retriever Puppies</h2>
+        <span class="breed-count">Between litters</span>
+      </div>
+      <!-- The live site keeps this section with an empty gallery. An explicit waiting-list
+           state reads better than a blank space. REPLACE THIS: expected next litter timing,
+           if the family wants to publish it. -->
+      <div class="empty-state">
+        <p>We do not have Golden Retriever puppies available right now. Diamond and Scarlet are
+        our Golden girls, and we would love to tell you when their next litter is planned.</p>
+        <a class="btn btn-primary" href="contact.html">Ask About the Next Litter</a>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -101,7 +124,7 @@
         <a class="btn btn-ghost" href="process.html">Read How It Works</a>
       </div>
     </div>
-    <img class="photo photo-fill reveal" src="img/puppy-malcolm-4.jpg" alt="Malcolm standing in the grass beside his handler" width="1600" height="1067" loading="lazy">
+    <img class="photo reveal" src="img/puppy-malcolm-4.jpg" alt="Malcolm standing in the grass beside his handler" width="1600" height="1067" loading="lazy">
   </div>
 </section>
 
@@ -133,7 +156,8 @@
         </ul>
       </div>
     </div>
-    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.</p>
+    <p class="foot-legal">&copy; 2026 Kingdom Family Companions. Visits are welcome by appointment. Our location is shared once your visit is scheduled.
+      <span style="display:block;margin-top:.5rem"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="accessibility-statement.html">Accessibility Statement</a></span></p>
   </div>
 </footer>
 
