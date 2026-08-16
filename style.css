@@ -527,10 +527,31 @@ form{margin-top:.5rem}
   .hero{padding:3.5rem 0 3rem}
   .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.band-2,.band-3,.testi-grid,.gal-wide,.bpost,.hero-split{grid-template-columns:1fr;gap:2rem}
   .band-2 img{height:auto}
-  .puppy-name{gap:.4rem}
+  /* keep the price on the same line as the name, to its right */
+  /* flex-end, not baseline: the name sits in a div under the kicker, so baseline
+     alignment pinned the price to the kicker's line instead of the name's */
+  .puppy-name{gap:.9rem;flex-wrap:nowrap;align-items:flex-end}
+  .puppy-name .price-line{font-size:1.4rem;white-space:nowrap}
+
+  /* --- mobile legibility and touch fixes --- */
+  /* micro-labels were rendering at 10.9-11.5px; floor them at 12px */
+  .brand .name span{font-size:.75rem}
+  .chat-panel .row .lbl{font-size:.78rem}
+  .pcard .pc-status{font-size:.75rem;letter-spacing:.08em}
+  /* the status column was 165px wide, squeezing the puppy name to 137px */
+  .pcard-bar{gap:.2rem .8rem}
+
+  /* standalone list links were 15-20px tall; give them a real touch target */
+  .footer li a,.mini-list a{display:inline-block;padding:.5rem 0;min-height:40px}
+  .footer li{margin-bottom:.1rem}
+  .foot-legal span a{display:inline-block;padding:.45rem 0}
+  .contact-lines .row a{display:inline-block;padding:.35rem 0;min-height:36px}
   .gal-wide{width:92%;gap:1rem}
   .hero-split{gap:0}
   .hero-split .hs-copy{padding:2.4rem 4% 2rem;order:2}
+  /* compound selectors outrank the shared single-column rule above, so each one that
+     sets grid-template-columns in the base CSS needs its own override here */
+  .contact-grid.photo-right{grid-template-columns:1fr}
   .ah-grid{grid-template-columns:1fr;gap:1.8rem}
   .ah-copy h1{white-space:normal;font-size:clamp(2.1rem,7vw,2.6rem)}
   .ah-photo{height:auto;width:100%}
