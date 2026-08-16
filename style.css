@@ -159,15 +159,20 @@ p{margin:0 0 1.1em}
 .verseband cite{font-style:normal;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 .verseband .note{max-width:52ch;margin:1.4rem auto 0;color:rgba(247,239,224,.85);font-size:.98rem}
 
+/* ---------- content photos ---------- */
+.photo{width:100%;height:auto;display:block;border:1px solid rgba(81,56,51,.18)}
+.verseband .vlogo{width:min(300px,64%);height:auto;margin:0 auto 1.6rem;display:block;opacity:.95}
+
 /* ---------- index / ledger rows ---------- */
 .ledger{border-top:var(--rule);margin-top:1rem}
 .ledger-row{
   display:grid;
-  grid-template-columns:minmax(140px,1.2fr) 2fr auto auto;
-  gap:1.5rem;align-items:baseline;
+  grid-template-columns:76px minmax(120px,1fr) 2fr auto auto;
+  gap:1.5rem;align-items:center;
   padding:1.4rem 0;border-bottom:var(--rule-soft);
   text-decoration:none;color:var(--ink);
 }
+.ledger-row .l-thumb{width:76px;height:76px;object-fit:cover;display:block;border:1px solid rgba(81,56,51,.18)}
 a.ledger-row:hover{background:var(--paper-deep)}
 .ledger-row .l-name{font-family:var(--serif);font-size:1.45rem;font-weight:500;color:var(--espresso)}
 .ledger-row .l-meta{color:var(--ink-soft);font-size:.98rem}
@@ -298,8 +303,10 @@ form{margin-top:.5rem}
   .dog{grid-template-columns:1fr;gap:1.5rem;padding:2.4rem 0}
   .foot-grid{grid-template-columns:1fr;gap:2rem}
   .two-up{grid-template-columns:1fr}
-  .ledger-row{grid-template-columns:1fr auto;row-gap:.3rem}
+  .ledger-row{grid-template-columns:64px 1fr auto;row-gap:.3rem}
+  .ledger-row .l-thumb{width:64px;height:64px}
   .ledger-row .l-meta{grid-column:1 / -1;order:3}
+  .ledger-row .l-price{grid-column:2}
   .step{padding-left:3.6rem}
   .step::before{font-size:1.7rem;top:2.1rem}
 }

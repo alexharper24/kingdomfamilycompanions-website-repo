@@ -57,12 +57,20 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
 ## Pending (the project tracker — keep current)
 
 **Content from the family:**
-- [ ] Photos. Everything visual is a labeled `PHOTO PENDING` placeholder frame. Needed:
-      hero (puppy + family), countryside/yard, each available puppy (2&ndash;3 each),
-      Mira, Diamond, Scarlet portraits, family photo, visit-day photo.
-- [ ] Logo file (exists on Wix as `Kingdom Family Companions.png`, 441&times;260). Pull
-      from the Wix media manager. Until then the header uses an inline crown SVG, and
-      the favicon/OG card are generated placeholders in the same mark.
+- [x] Photos: all 26 originals pulled from the live Wix site (2026-08-16) into
+      `source-photos/originals/` (gitignored) and optimized into `img/`. Every page
+      placeholder is now a real photo.
+- [ ] **CONFIRM the porch family photo** (`img/family-porch.jpg`, used on `about.html`)
+      actually shows the breeder family. It appears on the Wix homepage but is not
+      captioned there. Neutral alt text until confirmed.
+- [ ] **CONFIRM `img/adult-dog-1.jpg` / `img/adult-dog-2.jpg`** (a black-and-tan adult
+      and a red adult, shown on every Wix puppy listing). Probably the litter's parents;
+      staged in `img/` but deliberately not placed until the family says who they are.
+- [x] Logo: full 2000px original pulled. `img/logo-white.png` (verse band, OG card) and
+      `img/logo-espresso.png` (recolored to palette, available for header if preferred
+      over the crown mark). Header keeps the crown SVG for legibility at 34px.
+- [ ] Hero photo: currently the basket-puppy photo. Alternates in `img/` if a different
+      hero is preferred (boy-with-puppy, elowen-2, family-porch).
 - [ ] Per-puppy facts on `puppies.html` and `index.html`: **breed** (not stated on the
       live listings!), sex, date of birth, go-home date. Marked `REPLACE THIS`.
 - [ ] Family member names + intro sentences (`about.html`). Confirm what they will publish.
@@ -75,8 +83,10 @@ Before committing: `python check_site.py kingdomfamilycompanions-website-repo` f
       Confirm whether it varies by breed/litter.
 - [ ] Attribution for the long school-visit testimonial (currently unused; has the
       "hells"→"heels" typo).
-- [ ] OFA listing links on ofa.org for each dog (QR codes on the live site were not
-      transcribable; only the GenSol PDF and two Wisdom Panel links carried over).
+- [ ] OFA listing links on ofa.org for each dog. The Wix QR-code filenames carry the
+      OFA numbers: Mira **2720473**, Diamond **2702496**, Scarlet **2702953**. Wire
+      these to their ofa.org result pages (HTML comments mark the spots in
+      `our-dogs.html`).
 - [ ] Social links, if any.
 
 **Technical:**
