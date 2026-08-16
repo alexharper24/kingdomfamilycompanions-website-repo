@@ -164,6 +164,13 @@ p{margin:0 0 1.1em}
 .hero-split .hs-copy{padding:3.4rem clamp(1.5rem,4vw,4rem) 3.4rem
   max(3vw,calc((100vw - var(--maxw-wide)) / 2 + 1.5rem))}
 .hero-split .hs-photo{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
+/* light copy (a heading and a short lead) sits in a narrow column so the photo grows.
+   The column is sized to keep "Meet our family" on one line, not wider. */
+.hero-split.narrow-copy{grid-template-columns:minmax(340px,27%) 1fr}
+.hero-split.narrow-copy .hs-copy{padding-right:2.2rem}
+.hero-split.narrow-copy .lead{max-width:40ch}
+/* sized so the heading holds one line at the column's narrowest */
+.hero-split.narrow-copy h1{font-size:clamp(1.75rem,2.35vw,2.35rem);white-space:nowrap}
 .hero-logo{width:min(340px,70%);height:auto;display:block;margin-bottom:2rem}
 .caps{text-transform:uppercase;letter-spacing:.05em}
 .hero .verse{
@@ -291,9 +298,11 @@ a.ledger-row:hover{background:var(--paper-deep)}
 .pstep-copy p{margin-bottom:0;max-width:52ch}
 
 /* ---------- about: story column + figure ---------- */
-.story{display:grid;grid-template-columns:1.25fr 1fr;gap:3.5rem;align-items:start}
-.story-copy{max-width:64ch}
-.story-figure{margin:0}
+/* figure matches the paragraph column's width, and its photo fills the column's height */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch}
+.story-copy{max-width:none}
+.story-figure{margin:0;display:flex;flex-direction:column}
+.story-figure .photo{flex:1;width:100%;height:100%;object-fit:cover;min-height:340px}
 .story-figure figcaption{margin-top:.7rem;font-size:.92rem;color:var(--ink-soft);font-style:italic}
 
 /* ---------- numbered process (narrative scroll) ---------- */
@@ -513,6 +522,12 @@ form{margin-top:.5rem}
   .gal-wide{width:92%;gap:1rem}
   .hero-split{gap:0}
   .hero-split .hs-copy{padding:2.4rem 4% 2rem;order:2}
+  /* .narrow-copy is more specific than the shared single-column rule above, so it
+     needs its own override or it keeps a 340px minimum column and overflows. */
+  .hero-split.narrow-copy{grid-template-columns:1fr}
+  .hero-split.narrow-copy .hs-copy{padding-right:4%}
+  .hero-split.narrow-copy h1{white-space:normal;font-size:clamp(2.1rem,7vw,2.6rem)}
+  .story-figure .photo{min-height:0;height:auto}
   .hero-split .hs-photo{min-height:0;height:auto;order:1}
   .band-3 img{height:auto}
   .pcards{grid-template-columns:1fr;gap:1.4rem}
