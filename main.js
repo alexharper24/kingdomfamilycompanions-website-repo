@@ -22,11 +22,11 @@
 })();
 
 /* ---------- scroll reveal ----------
-   Two speeds:
-   - default: fires 300px early, so content is already there when the reader arrives
-     instead of fading in underneath them.
-   - inside .hold-reveal: waits until the element is genuinely on screen, for a section
-     that should not appear until the reader scrolls to it.
+   Default: fires 300px early, so content is already there when the reader arrives.
+   Inside .hold-reveal: does not appear before the reader scrolls UNLESS a meaningful
+   part of it is already on screen at load, in which case hiding it would just leave a
+   blank gap. So a tall or zoomed-out window shows it straight away; a normal window
+   holds it until you scroll down.
 */
 (function () {
   // Marks that JS is running. The hidden state lives on .js .reveal, so if this script
@@ -39,26 +39,46 @@
 
   if (!('IntersectionObserver' in window)) { all.forEach(show); return; }
 
-  // A held section must not appear until the reader actually scrolls. Visibility alone
-  // is not enough: on a tall window, or when the browser is zoomed out, the section is
-  // already on screen at load and would reveal straight away.
-  const heldEls = all.filter(el => el.closest('.hold-reveal'));
+  const heldEls  = all.filter(el => el.closest('.hold-reveal'));
   const earlyEls = all.filter(el => !el.closest('.hold-reveal'));
-  let scrolled = window.scrollY > 30;
 
   const onIntersect = (entries, obs) => entries.forEach(en => {
     if (en.isIntersecting) { show(en.target); obs.unobserve(en.target); }
   });
+
   const early = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '300px 0px' });
   earlyEls.forEach(el => early.observe(el));
 
+  // How much of an element is actually inside the viewport right now.
+  const visibleHeight = el => {
+    const r = el.getBoundingClientRect();
+    return Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+  };
+  const ENOUGH = 100;   // px of an element on screen that justifies showing it at once
+
+  let scrolled = window.scrollY > 30;
   let held = null;
   const armHeld = () => {
     if (held || !heldEls.length) return;
     held = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '-8% 0px -5% 0px' });
-    heldEls.forEach(el => held.observe(el));
+    heldEls.forEach(el => { if (!el.classList.contains('in')) held.observe(el); });
   };
+
+  // Before any scrolling, reveal a held section as a whole if a meaningful part of it is
+  // on screen, so the page never opens with an empty band below the hero. Section-level
+  // rather than element-level: its photo and its text sit side by side but the text is
+  // vertically centred and starts lower, so per-element checks revealed the photo and
+  // left the paragraph beside it blank.
+  const showWhatIsVisible = () => {
+    document.querySelectorAll('.hold-reveal').forEach(sec => {
+      if (visibleHeight(sec) < ENOUGH) return;
+      sec.querySelectorAll('.reveal').forEach(show);
+    });
+  };
+  showWhatIsVisible();
   if (scrolled) armHeld();
+
+  addEventListener('resize', () => { if (!scrolled) showWhatIsVisible(); }, { passive: true });
 
   const onFirstScroll = () => {
     if (window.scrollY <= 30) return;
@@ -68,22 +88,21 @@
   };
   addEventListener('scroll', onFirstScroll, { passive: true });
 
-  // Keyboard safety: if someone tabs into the held section before scrolling, show it
-  // rather than moving focus into invisible content.
+  // Keyboard safety: tabbing into the section reveals it rather than moving focus into
+  // invisible content.
   document.querySelectorAll('.hold-reveal').forEach(sec => {
-    sec.addEventListener('focusin', () => { heldEls.forEach(show); }, { once: true });
+    sec.addEventListener('focusin', () => heldEls.forEach(show), { once: true });
   });
 
-  // Backstop: some environments have IntersectionObserver but never deliver callbacks.
-  // A cheap scroll/resize check reveals anything already on screen, so content can
-  // never be stranded at opacity 0. Held sections still wait until they are in view.
+  // Backstop: an environment can support IntersectionObserver and never deliver
+  // callbacks, which would strand content at opacity 0.
   const sweep = () => {
     let remaining = 0;
     all.forEach(el => {
       if (el.classList.contains('in')) return;
-      const r = el.getBoundingClientRect();
       const isHeld = el.closest('.hold-reveal');
-      if (isHeld && !scrolled) { remaining++; return; }   // waits for a real scroll
+      if (isHeld && !scrolled) { if (visibleHeight(isHeld) >= ENOUGH) show(el); else remaining++; return; }
+      const r = el.getBoundingClientRect();
       const margin = isHeld ? 0 : 300;
       if (r.top < innerHeight + margin && r.bottom > -margin) show(el); else remaining++;
     });
