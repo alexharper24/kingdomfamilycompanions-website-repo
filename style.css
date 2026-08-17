@@ -493,7 +493,9 @@ form{margin-top:.5rem}
 /* Kept short and triggered early (see the rootMargin in main.js). At .7s with a 12%
    visibility threshold this read as "the photos take a second to load in" even when
    the bytes were already cached. */
-.reveal{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+/* hidden only when JS is running; without it every .reveal stays visible */
+.js .reveal{opacity:0;transform:translateY(10px)}
+.reveal{transition:opacity .35s ease,transform .35s ease}
 .reveal.in{opacity:1;transform:none}
 /* a photo already decoded should never be held back by the reveal */
 picture.reveal,.reveal picture{will-change:auto}

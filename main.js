@@ -21,17 +21,50 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 })();
 
-/* ---------- scroll reveal ---------- */
+/* ---------- scroll reveal ----------
+   Two speeds:
+   - default: fires 300px early, so content is already there when the reader arrives
+     instead of fading in underneath them.
+   - inside .hold-reveal: waits until the element is genuinely on screen, for a section
+     that should not appear until the reader scrolls to it.
+*/
 (function () {
-  const els = document.querySelectorAll('.reveal');
-  if (!els.length) return;
-  if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    // rootMargin starts the fade well before the element scrolls into view, so content
-    // is already visible by the time it arrives instead of fading in under the reader
-  }, { threshold: 0, rootMargin: '300px 0px' });
-  els.forEach(el => io.observe(el));
+  // Marks that JS is running. The hidden state lives on .js .reveal, so if this script
+  // never executes nothing is left invisible.
+  document.documentElement.classList.add('js');
+
+  const all = [...document.querySelectorAll('.reveal')];
+  if (!all.length) return;
+  const show = el => el.classList.add('in');
+
+  if (!('IntersectionObserver' in window)) { all.forEach(show); return; }
+
+  const onIntersect = (entries, obs) => entries.forEach(en => {
+    if (en.isIntersecting) { show(en.target); obs.unobserve(en.target); }
+  });
+  const early = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '300px 0px' });
+  const held  = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '-12% 0px -5% 0px' });
+  all.forEach(el => (el.closest('.hold-reveal') ? held : early).observe(el));
+
+  // Backstop: some environments have IntersectionObserver but never deliver callbacks.
+  // A cheap scroll/resize check reveals anything already on screen, so content can
+  // never be stranded at opacity 0. Held sections still wait until they are in view.
+  const sweep = () => {
+    let remaining = 0;
+    all.forEach(el => {
+      if (el.classList.contains('in')) return;
+      const r = el.getBoundingClientRect();
+      const margin = el.closest('.hold-reveal') ? 0 : 300;
+      if (r.top < innerHeight + margin && r.bottom > -margin) show(el); else remaining++;
+    });
+    if (!remaining) {
+      removeEventListener('scroll', sweep);
+      removeEventListener('resize', sweep);
+    }
+  };
+  addEventListener('scroll', sweep, { passive: true });
+  addEventListener('resize', sweep, { passive: true });
+  sweep();
 })();
 
 /* ---------- chat launcher: call, text, or email from any page ---------- */
