@@ -643,10 +643,27 @@ picture.reveal,.reveal picture{will-change:auto}
    when it arrives. Scoping the ratio to min-width leaves that box intact on phones.
    --------------------------------------------------------------------------- */
 @media(min-width:861px){
-  /* hero scales with its column instead of taking height from the copy beside it */
-  .hero-split .hs-photo{aspect-ratio:5/4;max-height:88vh}
   /* photo bands: 3/2 is these files' own ratio, so they align without cropping */
   .band-2 img,.band-3 img{aspect-ratio:3/2}
   /* puppy cards share one window so the three line up */
   .pcard img{aspect-ratio:4/3}
+}
+
+/* ---------------------------------------------------------------------------
+   Hero sizing.
+   The photo's height must derive from its own width only. An earlier max-height
+   in vh meant that on a short laptop viewport the height was pinned by the window
+   height while the width kept growing, so the photo re-cropped instead of scaling.
+   3/2 with no cap keeps the shape fixed and the size purely proportional.
+   --------------------------------------------------------------------------- */
+@media(min-width:1000px){
+  .hero-split .hs-photo{aspect-ratio:3/2}
+}
+/* Between the mobile breakpoint and 1000px the split left the copy column at its
+   360px minimum with a full-size heading, which ran far taller than the photo.
+   Stack it there instead. */
+@media(max-width:999px){
+  .hero-split{grid-template-columns:1fr;gap:0}
+  .hero-split .hs-copy{order:2;padding:2.4rem clamp(1.25rem,4vw,3rem) 2.2rem}
+  .hero-split .hs-photo{order:1;max-height:none}
 }
