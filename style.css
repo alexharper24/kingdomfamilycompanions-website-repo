@@ -173,6 +173,7 @@ p{margin:0 0 1.1em}
 .ah-grid{display:grid;grid-template-columns:minmax(320px,.8fr) 1.2fr;gap:3.5rem;align-items:center}
 .ah-copy .lead{max-width:none}
 .ah-copy h1{font-size:clamp(1.9rem,2.6vw,2.6rem);white-space:nowrap}
+.ah-grid picture{display:block}
 .ah-photo{width:100%;height:auto;display:block;border:1px solid rgba(81,56,51,.18)}
 .hero-logo{width:min(340px,70%);height:auto;display:block;margin-bottom:2rem}
 .caps{text-transform:uppercase;letter-spacing:.05em}
@@ -208,6 +209,8 @@ p{margin:0 0 1.1em}
 .contact-photo{width:100%}
 
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+/* the show-more control is a mobile affordance only */
+.testi-more{display:none;margin-top:1.8rem;text-align:center}
 .prose{max-width:62ch}
 .prose ul{padding-left:1.2rem}
 .prose li{margin-bottom:.5rem}
@@ -287,9 +290,14 @@ a.ledger-row:hover{background:var(--paper-deep)}
 .dog .dog-kicker{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:.4rem}
 .dog h3{font-size:1.9rem;margin-bottom:.2rem}
 .dog .reg-name{font-family:var(--serif);font-style:italic;color:var(--ink-soft);margin-bottom:1.2rem}
-.health{border-left:3px solid var(--gold);padding:.2rem 0 .2rem 1.2rem;margin:1.4rem 0}
+.health{border-left:3px solid var(--gold);padding:.2rem 0 .2rem 1.2rem;margin:1.4rem 0;
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start}
 .health p{margin-bottom:.4em}
 .health .btn{margin-top:.6rem;padding:.55rem 1.2rem;font-size:.88rem}
+.health-qr{margin:0;text-align:center;flex:none}
+.health-qr img{width:118px;height:118px;display:block;border:1px solid rgba(81,56,51,.18);background:#fff}
+.health-qr figcaption{margin-top:.45rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold-deep);line-height:1.4}
 
 /* ---------- process: alternating photo/copy rows ---------- */
 .pstep{display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:center;padding:2.6rem 0;border-top:var(--rule)}
@@ -325,11 +333,14 @@ a.ledger-row:hover{background:var(--paper-deep)}
 
 /* ---------- puppy detail page ---------- */
 .pgrid{display:grid;grid-template-columns:1.7fr 1fr;gap:3.5rem;align-items:start;padding:2rem 0 3rem}
-/* name on the left, price on the right, both sitting above the photo */
-.puppy-name{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
-  flex-wrap:wrap;margin-bottom:1rem}
+/* Kicker on its own line, then the name with the price beside it. The price is a
+   sibling of the h1 (not of the wrapper) so baseline alignment lands on the name
+   rather than on the kicker, and a fixed gap keeps them visually paired instead of
+   drifting apart on wide screens. */
+.puppy-name{margin-bottom:1rem}
+.puppy-name .name-row{display:flex;align-items:baseline;gap:1.1rem;flex-wrap:wrap}
 .puppy-name h1{margin-bottom:.1em}
-.puppy-name .price-line{margin:0 0 .35rem}
+.puppy-name .price-line{margin:0;font-size:clamp(1.35rem,2vw,1.7rem);color:var(--gold-deep)}
 
 /* carousel: one large photo, thumbnail strip beneath, no JS-free fallback needed */
 .carousel{position:relative}
@@ -528,10 +539,13 @@ form{margin-top:.5rem}
   .hero-grid,.split,.contact-grid,.pgrid,.vmission,.abgrid,.band,.band-2,.band-3,.testi-grid,.gal-wide,.bpost,.hero-split{grid-template-columns:1fr;gap:2rem}
   .band-2 img{height:auto}
   /* keep the price on the same line as the name, to its right */
-  /* flex-end, not baseline: the name sits in a div under the kicker, so baseline
-     alignment pinned the price to the kicker's line instead of the name's */
-  .puppy-name{gap:.9rem;flex-wrap:nowrap;align-items:flex-end}
-  .puppy-name .price-line{font-size:1.4rem;white-space:nowrap}
+  .puppy-name .name-row{gap:.85rem;flex-wrap:nowrap;align-items:baseline}
+  .puppy-name .price-line{white-space:nowrap}
+
+  /* only the first testimonial shows until the reader asks for more */
+  .testi-more{display:block}
+  .testimonial.is-extra{display:none}
+  .testi-grid.expanded .testimonial.is-extra{display:block}
 
   /* --- mobile legibility and touch fixes --- */
   /* micro-labels were rendering at 10.9-11.5px; floor them at 12px */
@@ -561,6 +575,8 @@ form{margin-top:.5rem}
   .pcards{grid-template-columns:1fr;gap:1.4rem}
   .pcard img{height:auto}
   .pstep,.story,.faq-grid{grid-template-columns:1fr;gap:1.6rem}
+  /* QR sits under the results rather than squeezing the text column */
+  .health{grid-template-columns:1fr;gap:1rem;justify-items:start}
   .faq-figure{position:static}
   .pstep.flip .photo{order:0}
   .pstep{padding:2rem 0}

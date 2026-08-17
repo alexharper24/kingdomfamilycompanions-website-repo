@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=27">
+  <link rel="stylesheet" href="style.css?v=29">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -126,23 +126,26 @@
       <span class="kicker">Client testimonials</span>
       <h2>What our families say</h2>
     </div>
-    <div class="testi-grid">
+    <div class="testi-grid" id="testiGrid">
       <figure class="testimonial reveal">
         <!-- REPLACE THIS: attribution for this one (unattributed on the live site; "heels" typo fixed) -->
         <blockquote>&ldquo;He&rsquo;s so well behaved for a puppy his age! He sits right down for all the kids at school immediately. He doesn&rsquo;t try to jump on them at all. He already sits, heels, shakes, and lays down on command. Knew his name in 1 week. Walks everywhere with me off leash and comes right back to me if I call him. He&rsquo;s the smartest dog I&rsquo;ve ever had! We love him so much!&rdquo;</blockquote>
       </figure>
-      <figure class="testimonial reveal">
+      <figure class="testimonial reveal is-extra">
         <blockquote>&ldquo;As you can tell, everyone loves Bo! He&rsquo;s been such a good boy, he follows Benny everywhere, goes potty outside, and knows when it&rsquo;s time to give Benny some space (Benny&rsquo;s bedtime is at 8, so he&rsquo;s done playing after that, lol). Thank you again!&rdquo;</blockquote>
         <figcaption>Mckinzie</figcaption>
       </figure>
-      <figure class="testimonial reveal">
+      <figure class="testimonial reveal is-extra">
         <blockquote>&ldquo;Oh, we love him so much! He is getting along great with our other dog and cats. He&rsquo;s such the sweetest, happiest boy!&rdquo;</blockquote>
         <figcaption>Courtney</figcaption>
       </figure>
-      <figure class="testimonial reveal">
+      <figure class="testimonial reveal is-extra">
         <blockquote>&ldquo;Thank you, she is a sweetheart! She is settling in nicely&rdquo;</blockquote>
         <figcaption>Letteer</figcaption>
       </figure>
+    </div>
+    <div class="testi-more">
+      <button type="button" class="btn btn-ghost" id="testiToggle" aria-expanded="false" aria-controls="testiGrid">Show more reviews</button>
     </div>
   </div>
 </section>
@@ -152,8 +155,8 @@
     <div class="reveal">
       <span class="kicker">Contact us</span>
       <h2>Tell us about your family</h2>
-      <!-- Replace YOUR_FORM_ID with the ID from the Formspree dashboard (same form as contact.html) -->
-      <form id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <p class="lead" style="margin-bottom:1.6rem">Send a short note and we will follow up to answer questions and set up a visit or a video call.</p>
+<form id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Puppy Inquiry - Kingdom Family Companions">
         <!-- spam honeypot. Uses the clip pattern, NOT left:-9999px: the off-screen
      trick expands the layout and gave the whole page horizontal scroll on mobile. -->
@@ -190,10 +193,12 @@
     </div>
     <div class="reveal">
       <img class="photo" src="img/dog-diamond.jpg" alt="Diamond, our Golden Retriever, out for a walk in the yard" width="1800" height="1200" loading="lazy">
-      <div class="contact-lines" style="margin-top:1.5rem">
-        <div class="row"><span class="lbl">Call/Text</span><a href="tel:+12603069010">(260) 306-9010</a></div>
-        <div class="row"><span class="lbl">Email</span><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></div>
-        <div class="row"><span class="lbl">Area</span><span>Milford, Indiana &middot; visits by appointment</span></div>
+      <div class="side-panel" style="margin-top:1.2rem">
+        <div class="contact-lines" style="border-top:none;margin-top:0">
+          <div class="row"><span class="lbl">Call/Text</span><a href="tel:+12603069010">(260) 306-9010</a></div>
+          <div class="row"><span class="lbl">Email</span><a href="mailto:info@kingdomfamilycompanions.com">info@kingdomfamilycompanions.com</a></div>
+          <div class="row"><span class="lbl">Area</span><span>Milford, Indiana &middot; visits by appointment</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -232,6 +237,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=3"></script>
+<script src="main.js?v=4"></script>
 </body>
 </html>

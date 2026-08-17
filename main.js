@@ -55,6 +55,20 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); } });
 })();
 
+/* ---------- testimonials: reveal the rest on mobile ---------- */
+(function () {
+  const btn = document.getElementById('testiToggle');
+  const grid = document.getElementById('testiGrid');
+  if (!btn || !grid) return;
+  btn.addEventListener('click', function () {
+    const open = !grid.classList.contains('expanded');
+    grid.classList.toggle('expanded', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Show fewer reviews' : 'Show more reviews';
+    if (!open) grid.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+})();
+
 /* ---------- puppy photo carousel ---------- */
 (function () {
   document.querySelectorAll('.carousel').forEach(function (car) {
