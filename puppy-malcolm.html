@@ -25,7 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=29">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="img/r/puppy-malcolm-2-600.webp 600w, img/r/puppy-malcolm-2-1100.webp 1100w, img/r/puppy-malcolm-2-1700.webp 1700w"
+        imagesizes="(max-width:860px) 92vw, 55vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=33">
 </head>
 <body>
 
@@ -61,19 +64,19 @@
     </div>
     <div class="carousel" tabindex="0" aria-label="Photos of Malcolm">
       <div class="frame">
-        <img src="img/puppy-malcolm-2.jpg" alt="Malcolm sitting in the grass" width="1800" height="1200" fetchpriority="high">
-        <img src="img/puppy-malcolm-1.jpg" alt="Malcolm sitting in the grass on a blue leash" width="1800" height="1200" loading="lazy" hidden>
-        <img src="img/puppy-malcolm-3.jpg" alt="Malcolm standing in the grass" width="1800" height="1200" loading="lazy" hidden>
-        <img src="img/puppy-malcolm-4.jpg" alt="Malcolm standing in the grass beside his handler" width="1800" height="1200" loading="lazy" hidden>
+        <picture><source type="image/webp" srcset="img/r/puppy-malcolm-2-600.webp 600w, img/r/puppy-malcolm-2-1100.webp 1100w, img/r/puppy-malcolm-2-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-2.jpg" alt="Malcolm sitting in the grass" width="1800" height="1200" fetchpriority="high" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="img/r/puppy-malcolm-1-600.webp 600w, img/r/puppy-malcolm-1-1100.webp 1100w, img/r/puppy-malcolm-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-1.jpg" alt="Malcolm sitting in the grass on a blue leash" width="1800" height="1200" loading="lazy" hidden decoding="async"></picture>
+        <picture><source type="image/webp" srcset="img/r/puppy-malcolm-3-600.webp 600w, img/r/puppy-malcolm-3-1100.webp 1100w, img/r/puppy-malcolm-3-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-3.jpg" alt="Malcolm standing in the grass" width="1800" height="1200" loading="lazy" hidden decoding="async"></picture>
+        <picture><source type="image/webp" srcset="img/r/puppy-malcolm-4-600.webp 600w, img/r/puppy-malcolm-4-1100.webp 1100w, img/r/puppy-malcolm-4-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-4.jpg" alt="Malcolm standing in the grass beside his handler" width="1800" height="1200" loading="lazy" hidden decoding="async"></picture>
         <button class="cnav cprev" type="button" aria-label="Previous photo">&#8249;</button>
         <button class="cnav cnext" type="button" aria-label="Next photo">&#8250;</button>
         <span class="count"></span>
       </div>
       <div class="cthumbs">
-        <button type="button" aria-label="Show photo 1 of Malcolm"><img src="img/puppy-malcolm-2.jpg" alt="" width="1800" height="1200" loading="lazy"></button>
-        <button type="button" aria-label="Show photo 2 of Malcolm"><img src="img/puppy-malcolm-1.jpg" alt="" width="1800" height="1200" loading="lazy"></button>
-        <button type="button" aria-label="Show photo 3 of Malcolm"><img src="img/puppy-malcolm-3.jpg" alt="" width="1800" height="1200" loading="lazy"></button>
-        <button type="button" aria-label="Show photo 4 of Malcolm"><img src="img/puppy-malcolm-4.jpg" alt="" width="1800" height="1200" loading="lazy"></button>
+        <button type="button" aria-label="Show photo 1 of Malcolm"><picture><source type="image/webp" srcset="img/r/puppy-malcolm-2-600.webp 600w, img/r/puppy-malcolm-2-1100.webp 1100w, img/r/puppy-malcolm-2-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-2.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture></button>
+        <button type="button" aria-label="Show photo 2 of Malcolm"><picture><source type="image/webp" srcset="img/r/puppy-malcolm-1-600.webp 600w, img/r/puppy-malcolm-1-1100.webp 1100w, img/r/puppy-malcolm-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-1.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture></button>
+        <button type="button" aria-label="Show photo 3 of Malcolm"><picture><source type="image/webp" srcset="img/r/puppy-malcolm-3-600.webp 600w, img/r/puppy-malcolm-3-1100.webp 1100w, img/r/puppy-malcolm-3-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-3.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture></button>
+        <button type="button" aria-label="Show photo 4 of Malcolm"><picture><source type="image/webp" srcset="img/r/puppy-malcolm-4-600.webp 600w, img/r/puppy-malcolm-4-1100.webp 1100w, img/r/puppy-malcolm-4-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-4.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async"></picture></button>
       </div>
     </div>
   </div>
@@ -113,7 +116,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/logo-white-420.webp 420w, img/r/logo-white-900.webp 900w" sizes="210px"><img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy" decoding="async"></picture>
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
@@ -142,6 +145,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

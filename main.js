@@ -28,7 +28,9 @@
   if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: 0.12 });
+    // rootMargin starts the fade well before the element scrolls into view, so content
+    // is already visible by the time it arrives instead of fading in under the reader
+  }, { threshold: 0, rootMargin: '300px 0px' });
   els.forEach(el => io.observe(el));
 })();
 

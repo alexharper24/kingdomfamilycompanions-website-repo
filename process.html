@@ -25,7 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=29">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="img/r/boy-with-puppy-600.webp 600w, img/r/boy-with-puppy-1100.webp 1100w, img/r/boy-with-puppy-1700.webp 1700w"
+        imagesizes="(max-width:860px) 92vw, 45vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=33">
 </head>
 <body>
 
@@ -61,7 +64,7 @@
 <section class="section tight">
   <div class="wrap">
     <div class="pstep reveal">
-      <img class="photo" src="img/boy-with-puppy.jpg" alt="A young boy holding a cream puppy" width="1799" height="1199" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/boy-with-puppy-600.webp 600w, img/r/boy-with-puppy-1100.webp 1100w, img/r/boy-with-puppy-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo" src="img/boy-with-puppy.jpg" alt="A young boy holding a cream puppy" width="1799" height="1199" fetchpriority="high" decoding="async"></picture>
       <div class="pstep-copy">
         <span class="pstep-num">01</span>
         <h2>Start an inquiry</h2>
@@ -69,7 +72,7 @@
       </div>
     </div>
     <div class="pstep flip reveal">
-      <img class="photo" src="img/puppy-elowen-2.jpg" alt="Elowen looking up while sitting in the grass" width="1800" height="1271" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/puppy-elowen-2-600.webp 600w, img/r/puppy-elowen-2-1100.webp 1100w, img/r/puppy-elowen-2-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo" src="img/puppy-elowen-2.jpg" alt="Elowen looking up while sitting in the grass" width="1800" height="1271" loading="lazy" decoding="async"></picture>
       <div class="pstep-copy">
         <span class="pstep-num">02</span>
         <h2>Talk with us and meet the puppies</h2>
@@ -77,7 +80,7 @@
       </div>
     </div>
     <div class="pstep reveal">
-      <img class="photo" src="img/puppy-malcolm-1.jpg" alt="Malcolm sitting in the grass on a blue leash" width="1800" height="1200" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/puppy-malcolm-1-600.webp 600w, img/r/puppy-malcolm-1-1100.webp 1100w, img/r/puppy-malcolm-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo" src="img/puppy-malcolm-1.jpg" alt="Malcolm sitting in the grass on a blue leash" width="1800" height="1200" loading="lazy" decoding="async"></picture>
       <div class="pstep-copy">
         <span class="pstep-num">03</span>
         <h2>Reserve your puppy with a deposit</h2>
@@ -85,7 +88,7 @@
       </div>
     </div>
     <div class="pstep flip reveal">
-      <img class="photo" src="img/puppy-cushion.jpg" alt="A black and tan puppy lying on a cushion with a rope toy" width="1799" height="1199" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/puppy-cushion-600.webp 600w, img/r/puppy-cushion-1100.webp 1100w, img/r/puppy-cushion-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo" src="img/puppy-cushion.jpg" alt="A black and tan puppy lying on a cushion with a rope toy" width="1799" height="1199" loading="lazy" decoding="async"></picture>
       <div class="pstep-copy">
         <span class="pstep-num">04</span>
         <h2>Watch them grow</h2>
@@ -93,7 +96,7 @@
       </div>
     </div>
     <div class="pstep reveal">
-      <img class="photo" src="img/puppy-griffin-1.jpg" alt="Griffin sitting on a country road beside a white fence" width="1800" height="1278" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/puppy-griffin-1-600.webp 600w, img/r/puppy-griffin-1-1100.webp 1100w, img/r/puppy-griffin-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo" src="img/puppy-griffin-1.jpg" alt="Griffin sitting on a country road beside a white fence" width="1800" height="1278" loading="lazy" decoding="async"></picture>
       <div class="pstep-copy">
         <span class="pstep-num">05</span>
         <h2>Go-home day</h2>
@@ -156,7 +159,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/logo-white-420.webp 420w, img/r/logo-white-900.webp 900w" sizes="210px"><img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy" decoding="async"></picture>
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
@@ -185,6 +188,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

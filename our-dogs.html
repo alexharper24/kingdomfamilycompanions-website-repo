@@ -25,7 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=29">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="img/r/dog-mira-600.webp 600w, img/r/dog-mira-1100.webp 1100w, img/r/dog-mira-1700.webp 1700w"
+        imagesizes="(max-width:860px) 92vw, 45vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=33">
 </head>
 <body>
 
@@ -62,7 +65,7 @@
   <div class="wrap">
 
     <article class="dog">
-      <img class="photo reveal" src="img/dog-mira.jpg" alt="Mira, our Doberman Pinscher, standing in the grass beside a white fence" width="1800" height="1270">
+      <picture><source type="image/webp" srcset="img/r/dog-mira-600.webp 600w, img/r/dog-mira-1100.webp 1100w, img/r/dog-mira-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo reveal" src="img/dog-mira.jpg" alt="Mira, our Doberman Pinscher, standing in the grass beside a white fence" width="1800" height="1270" decoding="async"></picture>
       <div class="prose reveal">
         <p class="dog-kicker">Doberman Pinscher</p>
         <h3>Mira</h3>
@@ -85,7 +88,7 @@
     </article>
 
     <article class="dog">
-      <img class="photo reveal" src="img/dog-diamond.jpg" alt="Diamond, our Golden Retriever, on a walk in the yard" width="1800" height="1200" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/dog-diamond-600.webp 600w, img/r/dog-diamond-1100.webp 1100w, img/r/dog-diamond-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo reveal" src="img/dog-diamond.jpg" alt="Diamond, our Golden Retriever, on a walk in the yard" width="1800" height="1200" loading="lazy" decoding="async"></picture>
       <div class="prose reveal">
         <p class="dog-kicker">Golden Retriever</p>
         <h3>Diamond</h3>
@@ -108,7 +111,7 @@
     </article>
 
     <article class="dog">
-      <img class="photo reveal" src="img/dog-scarlet.jpg" alt="Scarlet rolling happily in the grass" width="1800" height="1350" loading="lazy">
+      <picture><source type="image/webp" srcset="img/r/dog-scarlet-600.webp 600w, img/r/dog-scarlet-1100.webp 1100w, img/r/dog-scarlet-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img class="photo reveal" src="img/dog-scarlet.jpg" alt="Scarlet rolling happily in the grass" width="1800" height="1350" loading="lazy" decoding="async"></picture>
       <div class="prose reveal">
         <p class="dog-kicker">Golden Retriever</p>
         <h3>Scarlet</h3>
@@ -148,7 +151,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/logo-white-420.webp 420w, img/r/logo-white-900.webp 900w" sizes="210px"><img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy" decoding="async"></picture>
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
@@ -177,6 +180,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

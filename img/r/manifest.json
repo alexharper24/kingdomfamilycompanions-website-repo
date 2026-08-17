@@ -1,0 +1,570 @@
+{
+ "adult-dog-1.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/adult-dog-1-600.webp"
+   ],
+   [
+    1100,
+    "img/r/adult-dog-1-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/adult-dog-1-1700.webp"
+   ]
+  ]
+ },
+ "adult-dog-2.jpg": {
+  "orig": [
+   1200,
+   1600
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/adult-dog-2-600.webp"
+   ],
+   [
+    1100,
+    "img/r/adult-dog-2-1100.webp"
+   ],
+   [
+    1200,
+    "img/r/adult-dog-2-1200.webp"
+   ]
+  ]
+ },
+ "boy-with-puppy.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/boy-with-puppy-600.webp"
+   ],
+   [
+    1100,
+    "img/r/boy-with-puppy-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/boy-with-puppy-1700.webp"
+   ]
+  ]
+ },
+ "dog-diamond.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/dog-diamond-600.webp"
+   ],
+   [
+    1100,
+    "img/r/dog-diamond-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/dog-diamond-1700.webp"
+   ]
+  ]
+ },
+ "dog-mira.jpg": {
+  "orig": [
+   1800,
+   1270
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/dog-mira-600.webp"
+   ],
+   [
+    1100,
+    "img/r/dog-mira-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/dog-mira-1700.webp"
+   ]
+  ]
+ },
+ "dog-scarlet.jpg": {
+  "orig": [
+   1800,
+   1350
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/dog-scarlet-600.webp"
+   ],
+   [
+    1100,
+    "img/r/dog-scarlet-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/dog-scarlet-1700.webp"
+   ]
+  ]
+ },
+ "family-porch-tall.jpg": {
+  "orig": [
+   1400,
+   1735
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/family-porch-tall-600.webp"
+   ],
+   [
+    1100,
+    "img/r/family-porch-tall-1100.webp"
+   ],
+   [
+    1400,
+    "img/r/family-porch-tall-1400.webp"
+   ]
+  ]
+ },
+ "family-porch-wide.jpg": {
+  "orig": [
+   1600,
+   1067
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/family-porch-wide-600.webp"
+   ],
+   [
+    1100,
+    "img/r/family-porch-wide-1100.webp"
+   ],
+   [
+    1600,
+    "img/r/family-porch-wide-1600.webp"
+   ]
+  ]
+ },
+ "family-porch.jpg": {
+  "orig": [
+   1500,
+   1543
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/family-porch-600.webp"
+   ],
+   [
+    1100,
+    "img/r/family-porch-1100.webp"
+   ],
+   [
+    1500,
+    "img/r/family-porch-1500.webp"
+   ]
+  ]
+ },
+ "puppy-basket.jpg": {
+  "orig": [
+   1800,
+   1438
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-basket-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-basket-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-basket-1700.webp"
+   ]
+  ]
+ },
+ "puppy-blanket.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-blanket-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-blanket-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-blanket-1700.webp"
+   ]
+  ]
+ },
+ "puppy-cushion.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-cushion-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-cushion-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-cushion-1700.webp"
+   ]
+  ]
+ },
+ "puppy-elowen-1.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-elowen-1-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-elowen-1-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-elowen-1-1700.webp"
+   ]
+  ]
+ },
+ "puppy-elowen-2.jpg": {
+  "orig": [
+   1800,
+   1271
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-elowen-2-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-elowen-2-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-elowen-2-1700.webp"
+   ]
+  ]
+ },
+ "puppy-elowen-3.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-elowen-3-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-elowen-3-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-elowen-3-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-1.jpg": {
+  "orig": [
+   1800,
+   1278
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-1-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-1-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-1-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-2.jpg": {
+  "orig": [
+   1800,
+   1125
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-2-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-2-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-2-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-3.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-3-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-3-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-3-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-4.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-4-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-4-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-4-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-5.jpg": {
+  "orig": [
+   1800,
+   1261
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-5-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-5-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-5-1700.webp"
+   ]
+  ]
+ },
+ "puppy-griffin-6.jpg": {
+  "orig": [
+   1799,
+   1199
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-griffin-6-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-griffin-6-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-griffin-6-1700.webp"
+   ]
+  ]
+ },
+ "puppy-malcolm-1.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-malcolm-1-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-malcolm-1-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-malcolm-1-1700.webp"
+   ]
+  ]
+ },
+ "puppy-malcolm-2.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-malcolm-2-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-malcolm-2-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-malcolm-2-1700.webp"
+   ]
+  ]
+ },
+ "puppy-malcolm-3.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-malcolm-3-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-malcolm-3-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-malcolm-3-1700.webp"
+   ]
+  ]
+ },
+ "puppy-malcolm-4.jpg": {
+  "orig": [
+   1800,
+   1200
+  ],
+  "variants": [
+   [
+    600,
+    "img/r/puppy-malcolm-4-600.webp"
+   ],
+   [
+    1100,
+    "img/r/puppy-malcolm-4-1100.webp"
+   ],
+   [
+    1700,
+    "img/r/puppy-malcolm-4-1700.webp"
+   ]
+  ]
+ },
+ "thumb-elowen.jpg": {
+  "orig": [
+   560,
+   560
+  ],
+  "variants": [
+   [
+    240,
+    "img/r/thumb-elowen-240.webp"
+   ]
+  ]
+ },
+ "thumb-griffin.jpg": {
+  "orig": [
+   560,
+   560
+  ],
+  "variants": [
+   [
+    240,
+    "img/r/thumb-griffin-240.webp"
+   ]
+  ]
+ },
+ "thumb-malcolm.jpg": {
+  "orig": [
+   560,
+   560
+  ],
+  "variants": [
+   [
+    240,
+    "img/r/thumb-malcolm-240.webp"
+   ]
+  ]
+ },
+ "logo-white.png": {
+  "orig": [
+   900,
+   537
+  ],
+  "variants": [
+   [
+    420,
+    "img/r/logo-white-420.webp"
+   ],
+   [
+    900,
+    "img/r/logo-white-900.webp"
+   ]
+  ]
+ },
+ "logo-espresso.png": {
+  "orig": [
+   900,
+   537
+  ],
+  "variants": [
+   [
+    420,
+    "img/r/logo-espresso-420.webp"
+   ],
+   [
+    900,
+    "img/r/logo-espresso-900.webp"
+   ]
+  ]
+ }
+}

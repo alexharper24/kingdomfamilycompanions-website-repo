@@ -159,11 +159,14 @@ p{margin:0 0 1.1em}
 .hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:3.5rem;align-items:center}
 
 /* full-bleed hero: copy on a cream panel, photograph running to the screen edge */
-.hero-split{display:grid;grid-template-columns:minmax(420px,42%) 1fr;align-items:center;
+.hero-split{display:grid;grid-template-columns:minmax(360px,40%) 1fr;align-items:center;
   border-bottom:var(--rule);gap:0}
 .hero-split .hs-copy{padding:3.4rem clamp(1.5rem,4vw,4rem) 3.4rem
   max(3vw,calc((100vw - var(--maxw-wide)) / 2 + 1.5rem))}
-.hero-split .hs-photo{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
+/* Fixed aspect ratio, not height:100%. Taking its height from the copy column meant the
+   crop changed at every viewport width instead of the photo scaling proportionally.
+   5/4 matches the photo's own ratio, so it scales with the column and barely crops. */
+.hero-split .hs-photo{width:100%;height:auto;object-fit:cover;display:block}
 /* About hero: contained, not full bleed. The family crop is portrait, so its height
    is capped and the column is sized from the photo. A full-bleed 1fr column let the
    portrait drive the row height and swallow the page. */
@@ -199,9 +202,10 @@ p{margin:0 0 1.1em}
 .band img{width:100%;height:auto;display:block}
 .band-3{grid-template-columns:repeat(3,1fr)}
 .band-2{grid-template-columns:1fr 1fr}
-/* equalize the row so mixed aspect ratios still line up edge to edge */
-.band-3 img{height:clamp(300px,26vw,460px);object-fit:cover}
-.band-2 img{height:clamp(360px,34vw,620px);object-fit:cover}
+/* Fixed ratio rather than a clamped pixel height: a clamp made the crop shape change
+   with the viewport, so photos re-cropped as the window resized instead of scaling.
+   3/2 is these photos' own ratio, so they line up AND stay uncropped. */
+.band-3 img,.band-2 img{height:auto;object-fit:cover}
 
 /* wide gallery: page-width tiles, deliberately large, natural ratio */
 .gal-wide{width:min(96%,1500px);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -241,8 +245,11 @@ p{margin:0 0 1.1em}
 /* puppy cards: photo-forward, the picture is the click target */
 .pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.6rem}
 .pcard{text-decoration:none;color:var(--ink);display:block;border:1px solid rgba(81,56,51,.18);background:var(--white)}
-.pcard img{width:100%;height:clamp(300px,24vw,430px);object-fit:cover;display:block}
-.pcard-bar{padding:1.1rem 1.2rem;display:grid;grid-template-columns:1fr auto;gap:.15rem 1rem;align-items:baseline}
+/* constant 4/3 window so all three cards match at every width */
+.pcard img{width:100%;height:auto;object-fit:cover;display:block}
+/* row 1: name | price, row 2: meta | status. Source order matters: with the price
+   third it landed in the left column and floated in the middle of the card. */
+.pcard-bar{padding:1.1rem 1.2rem;display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;align-items:baseline}
 .pcard .pc-name{font-family:var(--serif);font-size:1.55rem;color:var(--espresso);line-height:1.1}
 .pcard .pc-price{font-family:var(--serif);font-size:1.15rem;color:var(--espresso);text-align:right}
 .pcard .pc-meta{font-size:.92rem;color:var(--ink-soft)}
@@ -490,8 +497,13 @@ form{margin-top:.5rem}
 .foot-legal a{font-weight:600}
 
 /* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+/* Kept short and triggered early (see the rootMargin in main.js). At .7s with a 12%
+   visibility threshold this read as "the photos take a second to load in" even when
+   the bytes were already cached. */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
 .reveal.in{opacity:1;transform:none}
+/* a photo already decoded should never be held back by the reveal */
+picture.reveal,.reveal picture{will-change:auto}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
@@ -621,4 +633,20 @@ form{margin-top:.5rem}
   /* deliberate dark blocks: keep them dark, do not let the lock repaint them */
   .verseband,.footer{background:var(--espresso-deep) !important;color:var(--cream-on-dark) !important}
   .footer a{color:var(--cream-on-dark) !important}
+}
+
+/* ---------------------------------------------------------------------------
+   Fixed crop windows, desktop and up only.
+   These must NOT be declared as `aspect-ratio:auto` on mobile: author-set
+   `aspect-ratio` overrides the UA rule that derives a ratio from the width/height
+   attributes, so an unloaded lazy image collapses to 0px tall and the page jumps
+   when it arrives. Scoping the ratio to min-width leaves that box intact on phones.
+   --------------------------------------------------------------------------- */
+@media(min-width:861px){
+  /* hero scales with its column instead of taking height from the copy beside it */
+  .hero-split .hs-photo{aspect-ratio:5/4;max-height:88vh}
+  /* photo bands: 3/2 is these files' own ratio, so they align without cropping */
+  .band-2 img,.band-3 img{aspect-ratio:3/2}
+  /* puppy cards share one window so the three line up */
+  .pcard img{aspect-ratio:4/3}
 }

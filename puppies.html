@@ -25,7 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=29">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="img/r/puppy-elowen-1-600.webp 600w, img/r/puppy-elowen-1-1100.webp 1100w, img/r/puppy-elowen-1-1700.webp 1700w"
+        imagesizes="(max-width:860px) 92vw, 30vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=33">
 </head>
 <body>
 
@@ -66,29 +69,29 @@
     </div>
     <div class="pcards reveal">
       <a class="pcard" href="puppy-elowen.html">
-        <img src="img/puppy-elowen-1.jpg" alt="Elowen sitting in the grass on a purple leash" width="1800" height="1200" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/puppy-elowen-1-600.webp 600w, img/r/puppy-elowen-1-1100.webp 1100w, img/r/puppy-elowen-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-elowen-1.jpg" alt="Elowen sitting in the grass on a purple leash" width="1800" height="1200" fetchpriority="high" decoding="async"></picture>
         <div class="pcard-bar">
           <span class="pc-name">Elowen</span>
-          <span class="pc-meta">Girl &middot; Doberman Pinscher</span>
           <span class="pc-price">$2,200</span>
+          <span class="pc-meta">Girl &middot; Doberman Pinscher</span>
           <span class="pc-status">Available</span>
         </div>
       </a>
       <a class="pcard" href="puppy-malcolm.html">
-        <img src="img/puppy-malcolm-2.jpg" alt="Malcolm looking at the camera in the grass" width="1800" height="1200" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/puppy-malcolm-2-600.webp 600w, img/r/puppy-malcolm-2-1100.webp 1100w, img/r/puppy-malcolm-2-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-malcolm-2.jpg" alt="Malcolm looking at the camera in the grass" width="1800" height="1200" loading="lazy" decoding="async"></picture>
         <div class="pcard-bar">
           <span class="pc-name">Malcolm</span>
-          <span class="pc-meta">Boy &middot; Doberman Pinscher</span>
           <span class="pc-price">$2,200</span>
+          <span class="pc-meta">Boy &middot; Doberman Pinscher</span>
           <span class="pc-status">Available</span>
         </div>
       </a>
       <a class="pcard" href="puppy-griffin.html">
-        <img src="img/puppy-griffin-1.jpg" alt="Griffin sitting on a country road beside a white fence" width="1800" height="1278" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/puppy-griffin-1-600.webp 600w, img/r/puppy-griffin-1-1100.webp 1100w, img/r/puppy-griffin-1-1700.webp 1700w" sizes="(max-width:860px) 92vw, 45vw"><img src="img/puppy-griffin-1.jpg" alt="Griffin sitting on a country road beside a white fence" width="1800" height="1278" loading="lazy" decoding="async"></picture>
         <div class="pcard-bar">
           <span class="pc-name">Griffin</span>
-          <span class="pc-meta">Boy &middot; Doberman Pinscher</span>
           <span class="pc-price">$2,200</span>
+          <span class="pc-meta">Boy &middot; Doberman Pinscher</span>
           <span class="pc-status">Available</span>
         </div>
       </a>
@@ -127,7 +130,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy">
+        <picture><source type="image/webp" srcset="img/r/logo-white-420.webp 420w, img/r/logo-white-900.webp 900w" sizes="210px"><img class="foot-logo" src="img/logo-white.png" alt="Kingdom Family Companions" width="900" height="537" loading="lazy" decoding="async"></picture>
         <p class="foot-verse">&ldquo;His Kingdom is an everlasting Kingdom&hellip;&rdquo;<span>Daniel 4:3</span></p>
         <p class="small muted">Family-raised Golden Retriever and Doberman Pinscher puppies in Milford, Indiana.</p>
       </div>
@@ -156,6 +159,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>
