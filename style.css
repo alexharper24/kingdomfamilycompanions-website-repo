@@ -160,9 +160,13 @@ p{margin:0 0 1.1em}
 
 /* full-bleed hero: copy on a cream panel, photograph running to the screen edge */
 .hero-split{display:grid;grid-template-columns:minmax(360px,40%) 1fr;align-items:center;
-  border-bottom:var(--rule);gap:0}
-.hero-split .hs-copy{padding:3.4rem clamp(1.5rem,4vw,4rem) 3.4rem
-  max(3vw,calc((100vw - var(--maxw-wide)) / 2 + 1.5rem))}
+  border-bottom:var(--rule);gap:0;
+  /* Bounded like the rest of the page. Left uncapped it kept taking 60% of any
+     viewport, so on a very wide screen (or when zoomed out, which enlarges the CSS
+     viewport) the hero ballooned while the 1500px content below it stayed put. */
+  max-width:1920px;margin-inline:auto}
+.hero-split .hs-copy{padding-block:3.4rem;
+  padding-inline:clamp(1.5rem,3.2vw,3.25rem)}
 /* Fixed aspect ratio, not height:100%. Taking its height from the copy column meant the
    crop changed at every viewport width instead of the photo scaling proportionally.
    5/4 matches the photo's own ratio, so it scales with the column and barely crops. */
@@ -198,7 +202,7 @@ p{margin:0 0 1.1em}
 /* full-bleed photo band: natural 3:2 images, edge to edge, no cropping */
 /* full width without 100vw: 100vw counts the scrollbar and causes horizontal scroll.
    .band sits outside .wrap, so 100% already spans the page. */
-.band{width:100%;margin-left:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.5rem 0}
+.band{width:100%;max-width:1920px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.5rem 0}
 .band img{width:100%;height:auto;display:block}
 .band-3{grid-template-columns:repeat(3,1fr)}
 .band-2{grid-template-columns:1fr 1fr}
