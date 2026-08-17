@@ -39,12 +39,40 @@
 
   if (!('IntersectionObserver' in window)) { all.forEach(show); return; }
 
+  // A held section must not appear until the reader actually scrolls. Visibility alone
+  // is not enough: on a tall window, or when the browser is zoomed out, the section is
+  // already on screen at load and would reveal straight away.
+  const heldEls = all.filter(el => el.closest('.hold-reveal'));
+  const earlyEls = all.filter(el => !el.closest('.hold-reveal'));
+  let scrolled = window.scrollY > 30;
+
   const onIntersect = (entries, obs) => entries.forEach(en => {
     if (en.isIntersecting) { show(en.target); obs.unobserve(en.target); }
   });
   const early = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '300px 0px' });
-  const held  = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '-12% 0px -5% 0px' });
-  all.forEach(el => (el.closest('.hold-reveal') ? held : early).observe(el));
+  earlyEls.forEach(el => early.observe(el));
+
+  let held = null;
+  const armHeld = () => {
+    if (held || !heldEls.length) return;
+    held = new IntersectionObserver(onIntersect, { threshold: 0, rootMargin: '-8% 0px -5% 0px' });
+    heldEls.forEach(el => held.observe(el));
+  };
+  if (scrolled) armHeld();
+
+  const onFirstScroll = () => {
+    if (window.scrollY <= 30) return;
+    scrolled = true;
+    armHeld();
+    removeEventListener('scroll', onFirstScroll);
+  };
+  addEventListener('scroll', onFirstScroll, { passive: true });
+
+  // Keyboard safety: if someone tabs into the held section before scrolling, show it
+  // rather than moving focus into invisible content.
+  document.querySelectorAll('.hold-reveal').forEach(sec => {
+    sec.addEventListener('focusin', () => { heldEls.forEach(show); }, { once: true });
+  });
 
   // Backstop: some environments have IntersectionObserver but never deliver callbacks.
   // A cheap scroll/resize check reveals anything already on screen, so content can
@@ -54,7 +82,9 @@
     all.forEach(el => {
       if (el.classList.contains('in')) return;
       const r = el.getBoundingClientRect();
-      const margin = el.closest('.hold-reveal') ? 0 : 300;
+      const isHeld = el.closest('.hold-reveal');
+      if (isHeld && !scrolled) { remaining++; return; }   // waits for a real scroll
+      const margin = isHeld ? 0 : 300;
       if (r.top < innerHeight + margin && r.bottom > -margin) show(el); else remaining++;
     });
     if (!remaining) {
