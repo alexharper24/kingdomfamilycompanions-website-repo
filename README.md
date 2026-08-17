@@ -154,6 +154,11 @@ Crawled every page. Carried forward or deliberately dropped:
       Diamond; OFA lists cardiac for all three, plus hips and elbows for Diamond). Eye
       exams (CAER) are often not published to OFA. **Ask the family to confirm the
       wording** rather than changing their claims.
+- [ ] **More Golden Retriever photos.** The library from the Wix site is Doberman-heavy:
+      13 of the puppy photos are the current Doberman litter (Elowen, Malcolm, Griffin)
+      and only 5 show Goldens (two Golden puppies, Diamond, Scarlet, and the boy holding
+      a puppy). Pages that should feel like both breeds have to reuse the same few Golden
+      shots. Golden litter photos would fix this properly.
 - [ ] Social links, if any. The live site has none in the footer.
 - [ ] Ask about the former name "Soli Deo Gloria Family Companion Dogs" (see findings).
 - [ ] Family/attorney review of the carried-over privacy policy and the rewritten
