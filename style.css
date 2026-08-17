@@ -171,17 +171,6 @@ p{margin:0 0 1.1em}
    crop changed at every viewport width instead of the photo scaling proportionally.
    5/4 matches the photo's own ratio, so it scales with the column and barely crops. */
 .hero-split .hs-photo{width:100%;height:auto;object-fit:cover;display:block}
-/* About hero: contained, not full bleed. The family crop is portrait, so its height
-   is capped and the column is sized from the photo. A full-bleed 1fr column let the
-   portrait drive the row height and swallow the page. */
-.about-hero{padding-top:2.4rem}
-/* proportioned columns: the copy column tracks its text instead of absorbing all the
-   leftover space, which is what left a large void beside the photo */
-.ah-grid{display:grid;grid-template-columns:minmax(320px,.8fr) 1.2fr;gap:3.5rem;align-items:center}
-.ah-copy .lead{max-width:none}
-.ah-copy h1{font-size:clamp(1.9rem,2.6vw,2.6rem);white-space:nowrap}
-.ah-grid picture{display:block}
-.ah-photo{width:100%;height:auto;display:block;border:1px solid rgba(81,56,51,.18)}
 .hero-logo{width:min(340px,70%);height:auto;display:block;margin-bottom:2rem}
 .caps{text-transform:uppercase;letter-spacing:.05em}
 .hero .verse{
@@ -582,9 +571,6 @@ picture.reveal,.reveal picture{will-change:auto}
   /* compound selectors outrank the shared single-column rule above, so each one that
      sets grid-template-columns in the base CSS needs its own override here */
   .contact-grid.photo-right{grid-template-columns:1fr}
-  .ah-grid{grid-template-columns:1fr;gap:1.8rem}
-  .ah-copy h1{white-space:normal;font-size:clamp(2.1rem,7vw,2.6rem)}
-  .ah-photo{height:auto;width:100%}
   .story-figure .photo{min-height:0;height:auto}
   .hero-split .hs-photo{min-height:0;height:auto;order:1}
   .band-3 img{height:auto}
@@ -671,3 +657,7 @@ picture.reveal,.reveal picture{will-change:auto}
   .hero-split .hs-copy{order:2;padding:2.4rem clamp(1.25rem,4vw,3rem) 2.2rem}
   .hero-split .hs-photo{order:1;max-height:none}
 }
+
+/* About now opens directly on the story instead of a photo hero */
+.about-open{padding-top:2.6rem}
+.about-open h1{font-size:clamp(2.1rem,4vw,3rem);margin-bottom:.5em}
