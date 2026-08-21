@@ -219,6 +219,10 @@ p{margin:0 0 1.1em}
 /* the show-more control is a mobile affordance only */
 .testi-more{display:none;margin-top:1.8rem;text-align:center}
 .prose{max-width:62ch}
+/* A closing call to action centred on purpose: the text and buttons centre with it, so
+   it reads as a deliberate full-width sign-off rather than a block sitting off-gutter. */
+.cta-center{margin-inline:auto;text-align:center;max-width:56ch}
+.cta-center .btn-row{justify-content:center}
 .prose ul{padding-left:1.2rem}
 .prose li{margin-bottom:.5rem}
 
