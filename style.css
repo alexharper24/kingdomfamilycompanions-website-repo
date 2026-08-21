@@ -159,7 +159,7 @@ p{margin:0 0 1.1em}
 .hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:3.5rem;align-items:center}
 
 /* full-bleed hero: copy on a cream panel, photograph running to the screen edge */
-.hero-split{display:grid;grid-template-columns:minmax(360px,40%) 1fr;align-items:center;
+.hero-split{display:grid;grid-template-columns:minmax(370px,44%) 1fr;align-items:center;
   border-bottom:var(--rule);gap:0;
   /* Bounded like the rest of the page. Left uncapped it kept taking 60% of any
      viewport, so on a very wide screen (or when zoomed out, which enlarges the CSS
@@ -167,11 +167,21 @@ p{margin:0 0 1.1em}
   max-width:1920px;margin-inline:auto}
 .hero-split .hs-copy{padding-block:3.4rem;
   padding-inline:clamp(1.5rem,3.2vw,3.25rem)}
+
+/* The hero heading sits in a column that is only 40% of the viewport, so sizing it in
+   vw made it hit its cap at ~1000px and wrap to four lines all the way to 1600px,
+   leaving the copy column hundreds of pixels taller than the photo beside it. Size it
+   against its own container instead. The vw line is the fallback: browsers without
+   container units drop the cqw declaration and keep it. */
+.hero-split .hs-copy h1{font-size:clamp(1.85rem,3vw,3.3rem)}
+.hero-split .hs-copy{container-type:inline-size}
+.hero-split .hs-copy h1{font-size:clamp(1.85rem,9cqw,3.3rem)}
+.hero-split .hs-copy .lead{max-width:46ch}
 /* Fixed aspect ratio, not height:100%. Taking its height from the copy column meant the
    crop changed at every viewport width instead of the photo scaling proportionally.
    5/4 matches the photo's own ratio, so it scales with the column and barely crops. */
 .hero-split .hs-photo{width:100%;height:auto;object-fit:cover;display:block}
-.hero-logo{width:min(340px,70%);height:auto;display:block;margin-bottom:2rem}
+.hero-logo{width:min(260px,52%);height:auto;display:block;margin-bottom:1.35rem}
 .caps{text-transform:uppercase;letter-spacing:.05em}
 .hero .verse{
   margin-top:2.2rem;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink-soft);
@@ -651,6 +661,7 @@ picture.reveal,.reveal picture{will-change:auto}
 @media(min-width:1000px){
   .hero-split .hs-photo{aspect-ratio:3/2}
 }
+
 /* Between the mobile breakpoint and 1000px the split left the copy column at its
    360px minimum with a full-size heading, which ran far taller than the photo.
    Stack it there instead. */
