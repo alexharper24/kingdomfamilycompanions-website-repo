@@ -689,3 +689,19 @@ picture.reveal,.reveal picture{will-change:auto}
 /* About now opens directly on the story instead of a photo hero */
 .about-open{padding-top:2.6rem}
 .about-open h1{font-size:clamp(2.1rem,4vw,3rem);margin-bottom:.5em}
+
+/* ---------- skip link ----------
+   Off-screen until focused, then a real button top-left. Pairs with the
+   <main id="main"> landmark: without both, a keyboard or screen-reader user
+   cannot bypass the header nav on any page (WCAG 2.1 SC 2.4.1, Level A). */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;
+  background:#1f1d1b;color:#fff;font-weight:600;font-size:15px;
+  padding:12px 20px;border-radius:0 0 10px 0;text-decoration:none}
+.skip-link:focus{left:0}
+
+/* Visible keyboard focus on every interactive element. Without this the only
+   focus indicator is the browser default, which several themes here suppress
+   via resets. */
+a:focus-visible,button:focus-visible,input:focus-visible,
+textarea:focus-visible,select:focus-visible,summary:focus-visible,
+[tabindex]:focus-visible{outline:3px solid currentColor;outline-offset:2px}
